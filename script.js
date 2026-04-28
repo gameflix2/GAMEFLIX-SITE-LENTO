@@ -64,14 +64,14 @@ function createYTPlayer(ytId) {
   // Cria div alvo para o player
   var playerDiv = document.createElement('div');
   playerDiv.id = 'yt-actual-player';
-  playerDiv.style.cssText = 'position:absolute;top:0;left:0;width:150%;height:150%;';
+  playerDiv.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
   container.innerHTML = '';
   container.appendChild(playerDiv);
 
   ytPlayer = new YT.Player('yt-actual-player', {
     videoId: ytId,
-    width: '150%',
-    height: '150%',
+    width: '100%',
+    height: '100%',
     playerVars: {
       autoplay: 1,
       mute: 1,
@@ -88,12 +88,10 @@ function createYTPlayer(ytId) {
       playsinline: 1
     },
     events: {
-onReady: function(e) {
-  var iframe = e.target.getIframe(); // Pega o iframe diretamente do player
+     onReady: function(e) {
+  var iframe = document.querySelector('#yt-player-container iframe');
   if (iframe) {
-    // Removemos o width: 100% e height: 100% daqui para o CSS externo funcionar
-    iframe.style.border = 'none';
-    iframe.style.pointerEvents = 'none';
+    iframe.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;height:100vh;min-width:100%;min-height:56.25vw;border:none;pointer-events:none;';
   }
   e.target.mute();
   e.target.playVideo();
@@ -189,7 +187,7 @@ function setBannerVideo(videoSrc) {
     var playerContainer = document.createElement('div');
     playerContainer.id = 'yt-player-container';
     // Tamanho maior que 100% para esconder barras/logo do YouTube
-    playerContainer.style.cssText = 'position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%);pointer-events:none;';
+    playerContainer.style.cssText = 'position:absolute;top:50%;left:50%;width:177.78vh;height:100vh;min-width:100%;min-height:56.25vw;transform:translate(-50%,-50%);pointer-events:none;';
 
     wrapper.appendChild(playerContainer);
     section.insertBefore(wrapper, section.firstChild);
