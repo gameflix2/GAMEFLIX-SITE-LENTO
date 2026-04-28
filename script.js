@@ -64,7 +64,7 @@ function createYTPlayer(ytId) {
   // Cria div alvo para o player
   var playerDiv = document.createElement('div');
   playerDiv.id = 'yt-actual-player';
-  playerDiv.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+  playerDiv.style.cssText = 'position:absolute;top:0;left:0;width:150%;height:150%;';
   container.innerHTML = '';
   container.appendChild(playerDiv);
 
