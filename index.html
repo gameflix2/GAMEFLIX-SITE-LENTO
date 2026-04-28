@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-984C9PT9MG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-984C9PT9MG');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Início - Gameflix</title>
+  
+<link rel="icon" type="image/png" href="https://cdn.awsli.com.br/300x300/138/138431/produto/247791692/mac-4397-p1-2uo82k2e1g.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @keyframes pulse-unmute {
+      0%   { box-shadow: 0 0 16px rgba(229,9,20,0.5); transform: scale(1); }
+      50%  { box-shadow: 0 0 36px rgba(229,9,20,0.9); transform: scale(1.05); }
+      100% { box-shadow: 0 0 16px rgba(229,9,20,0.5); transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-header">
+    <a href="#" class="logo"></a>
+  </div>
+  
+  <div class="login-box">
+    <h1>Entrar</h1>
+    <form id="login-form">
+      <div class="input-group">
+        <input type="email" id="user-email" required placeholder="Email">
+      </div>
+      <div class="input-group">
+        <input type="password" id="user-password" required placeholder="Senha">
+      </div>
+      <button type="submit" class="btn-login-submit">Entrar</button>
+      
+      <div class="login-help">
+        <div class="remember-me">
+          <input type="checkbox" id="remember">
+          <label for="remember">Lembre-se de mim</label>
+        </div>
+        <a href="#">Precisa de ajuda?</a>
+      </div>
+    </form>
+
+    <div class="login-footer-info">
+      <p>Novo por aqui? <a href="javascript:void(0)" onclick="openWppModal()" style="color: #e50914; font-weight: bold; text-decoration: none;">FAÇA UM TESTE GRATIS.</a></p>
+      <p class="captcha-text">
+        clique no botao para gerar um QRCODE 
+      </p>
+    </div>
+  </div>
+</div>
+
+<header class="pinning-header" id="header">
+  <div class="main-header"> 
+    <a href="#" class="logo" id="logo-back-to-top">
+      <img src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1776897450/l_ogo-removebg-preview_wfpn6h_kxdhee.png" alt="GAMEFLIX">
+    </a>
+    
+    <ul class="nav-links">
+      <li><a href="javascript:void(0)" onclick="openCategoryModal('ofertas')">Ofertas exclusivas</a></li>
+      <li><a href="javascript:void(0)" onclick="openCategoryModal('lancamentos')">Lançamentos</a></li>
+      <li><a href="javascript:void(0)" onclick="openCategoryModal('instalar')">Como instalar</a></li>
+      <li><a href="javascript:void(0)" onclick="openCategoryModal('sorteios')">SORTEIOS</a></li>
+      <li><a href="javascript:void(0)" onclick="openCategoryModal('duvidas')">Dúvidas / Suporte</a></li>
+    </ul>
+
+    <div class="header-actions">
+      <div class="search-wrapper">
+        <span class="search-text">Pesquise aqui...</span>
+        
+        <div class="search-container" id="search-container">
+          <div class="search-box">
+            <input type="text" id="game-search" placeholder="Títulos, personagens..." autocomplete="off">
+          </div>
+          <div class="search-results-dropdown" id="search-results-dropdown"></div>
+        </div>
+      </div>
+
+      <img class="profile" src="https://cdn2.steamgriddb.com/icon_thumb/c08667a5c4e674eec06bb4b2875395ff.png" alt="Perfil">
+    </div>
+  </div>
+</header>
+
+  <section class="banner" id="main-banner">
+    <video class="banner-video" autoplay muted loop playsinline id="banner-video">
+      <source src="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" type="video/mp4">
+    </video>
+   <div class="banner-content">
+  <img src="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png" id="banner-logo" alt="Logo do Jogo">
+  
+  <p id="banner-desc">BF6 ocupa o top 1 da Gameflix como o jogo mais baixado da plataforma!</p>
+  
+  <a href="info.html?id=battlefield-6" id="banner-link" target="_blank" rel="noopener noreferrer">
+    <button class="btn-play" id="btn-main-action">ⓘ MAIS INFORMAÇÕES</button>
+  </a>
+  
+  <button class="btn-info"> + Minha Lista</button>
+
+</div>
+
+  <button id="btn-unmute" style="
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    background: rgba(20,20,20,0.85);
+    color: #fff;
+    border: 2px solid #e50914;
+    border-radius: 50px;
+    padding: 14px 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 24px rgba(229,9,20,0.5);
+    animation: pulse-unmute 1.2s infinite;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+  ">🔊 ATIVAR SOM</button>
+  </section>
+
+  <div class="row" style="margin-top: 80px;">
+          <h2>JOGOS GRATIS GAMEFLIX</h2>
+    <div class="games-scroll">
+    
+    <div class="game-container" style="position: relative; flex: 0 0 auto;">
+        <span class="price-tag" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.2); z-index: 5; pointer-events: none;">R$ 24,90</span>
+        <img class="game-card free-game-trigger" 
+             src="https://assets.xboxservices.com/assets/7b/54/7b54f5e4-0857-4ce3-8a18-2b8c431e8a9e.jpg?n=Elden-Ring_GLP-Page-Hero-0_1083x1222_01.jpg" 
+             data-title="ELDEN RING" 
+             data-logo="https://www.pngall.com/wp-content/uploads/13/Elden-Ring-Logo-PNG-File.png"
+             data-desc="Sobreviva em um mundo aberto deslumbrante, domine combates intensos e conquiste o Anel Prata." 
+             data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+             data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772073320/ELDEN_yfkx0p.mp4">
+    </div>
+
+    <div class="game-container" style="position: relative; flex: 0 0 auto;">
+        <span class="price-tag" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.2); z-index: 5; pointer-events: none;">R$ 17,90</span>
+        <img class="game-card free-game-trigger" 
+             src="https://howlongtobeat.com/games/72822_Resident_Evil_3_(2020).jpg" 
+             data-title="Resident Evil 3" 
+             data-logo="https://www.residentevil.com/re3/assets/images/common/re3_logo.png"
+             data-desc="Encarne Jill Valentine e lute para escapar de Raccoon City e do implacável Nemesis." 
+             data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+             data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772474147/RESIDENTE_EVIL_3_qqvli7.mp4">
+    </div>
+
+    <div class="game-container" style="position: relative; flex: 0 0 auto;">
+        <span class="price-tag" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.2); z-index: 5; pointer-events: none;">R$ 14,90</span>
+        <img class="game-card free-game-trigger" 
+             src="https://upload.wikimedia.org/wikipedia/pt/5/59/Far_cry_3_box_art.jpg" 
+             data-title="far Cry 3" 
+             data-logo="https://cdn2.steamgriddb.com/logo/e75d4d01cecdda3c64483016bd6af4c1.png"
+             data-desc="Descubra os segredos sombrios de uma ilha tropical onde a sanidade é um luxo e a sobrevivência é a única regra." 
+             data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+             data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772480259/farcry3_wi0ev1.mp4">
+    </div>
+
+    <div class="game-container" style="position: relative; flex: 0 0 auto;">
+        <span class="price-tag" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.2); z-index: 5; pointer-events: none;">R$ 24,90</span>
+        <img class="game-card free-game-trigger" 
+             src="https://store-images.s-microsoft.com/image/apps.27657.69516029925336975.e3cb0155-71cd-4799-bed4-63da86cce109.61267421-c294-418d-98ad-81f696989b4f" 
+             data-title="sleeping dogs" 
+             data-logo="https://cdn2.steamgriddb.com/logo/aa3199d5c293effb09ae1015f62e4199.png"
+             data-desc="Um policial infiltrado deve subir na posição das Tríades de Hong Kong enquanto lida com conflitos de lealdade e combates brutais de artes marciais." 
+             data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+             data-video="222222222222222222222" 
+             data-drive="22222222222222222222222">
+    </div>
+
+    <div class="game-container" style="position: relative; flex: 0 0 auto;">
+        <span class="price-tag" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.2); z-index: 5; pointer-events: none;">R$ 14,90</span>
+        <img class="game-card free-game-trigger" 
+             src="https://images.squarespace-cdn.com/content/v1/58bedb0ab3db2bd0463e552b/1488928090199-81WOQR4N03UFM3MBW3OQ/BLOG_FARCRY_1280X788_001A.jpg" 
+             data-title="FarCry Primal" 
+             data-logo="https://upload.wikimedia.org/wikipedia/commons/6/6c/Far_Cry_Primal_Logo.png"
+             data-desc="Sobreviva à Idade da Pedra e domine feras selvagens." 
+             data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+             data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1771613996/farcry_z2rivm.mp4" 
+             data-drive="https://drive.google.com/uc?export=download&id=1jCvhMNka9U0hJv2NqioXyS3xWGLbI9nQ">
+    </div>
+
+
+    
+    <div class="game-container" style="position: relative; flex: 0 0 auto;">
+        <span class="price-tag" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.2); z-index: 5; pointer-events: none;">R$ 14,90</span>
+        <img class="game-card free-game-trigger" 
+             src="https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000002090/ecfc64f339579b17ed8d12d5bdb4acd0cad2811cb2ff7dd0a02ce7e512c2d26a" 
+             data-title="Crash Bandicoot™" 
+             data-logo="https://upload.wikimedia.org/wikipedia/fr/7/75/Crash_Bandicoot_N_Sane_Trilogy_Logo.png"
+             data-desc="A trilogia original que marcou época, agora em alta definição." 
+             data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+             data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772480502/crash_srwj1b.mp4">
+    </div>
+
+</div>
+
+  <div class="top10-banner">
+    <img src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1771951448/Banner_Horizontal_Black_Friday_Vibrante_Preto_e_Vermelho_2_lhgsn0.png" alt="Banner Top 10">
+  </div>
+
+  <div class="row">
+   <h2>VEJA A LISTA DOS TOP 10 JOGOS DA GAMEFLIX</h2>
+<div class="top-10-container">
+      
+    <button onclick="scrollTop10Left()">⮜</button>
+
+  <div id="top10" class="top-10-row">
+  
+  <div class="card-container">
+    <span class="rank-number">1</span>
+    <img src="https://cdn1.epicgames.com/offer/a14a02aa3c8143729605eaf7c93d7501/EGS_Battlefield6_BattlefieldStudios_S2_1200x1600-a88625a836120c55650c83d17a010c25" 
+         class="poster-img" 
+         data-title="Battlefield 6" 
+         data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-desc="O jogo mais baixado da plataforma! Destruição total, gráficos fotorrealistas e a franquia Battlefield no seu auge — BF6 ocupa o TOP 1 da GAMEFLIX." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="8haXeAwKLOg">
+  </div>
+
+  <div class="card-container">
+    <span class="rank-number">2</span>
+    <img src="https://cdn.loaded.com/496x700/media/catalog/product/r/e/resident_evil_requiem_cdkeys_1.png" 
+         class="poster-img" 
+         data-title="Resident Evil Requiem" 
+         data-logo="https://cdn2.steamgriddb.com/logo/5b91726d21e05916d2eb308f2fd0444e.png"
+         data-desc="Lançamento Exclusivo." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772427160/Resident_Evil_Requiem_-_Launch_Trailer_-_Resident_Evil_1080p_h264_qrswi7.mp4">
+  </div>
+
+  <div class="card-container">
+    <span class="rank-number">3</span>
+    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e7/Red_Dead_Redemption_2.png" 
+         class="poster-img" 
+         data-title="Red Dead Redemption 2" 
+         data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Red_Dead_Redemption_2_Logo.png/1280px-Red_Dead_Redemption_2_Logo.png"
+         data-desc="A lenda do oeste." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1771734264/red_dead_2_hsqfm7.mp4">
+  </div>
+
+  <div class="card-container">
+    <span class="rank-number">4</span>
+    <img src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1771886278/Captura_de_tela_2026-02-23_185713_cljm2d.png" 
+         class="poster-img" 
+         data-title="FIFA 26" 
+         data-logo="https://fifauteam.com/images/fc26/logo/long-green.png"
+         data-desc="A nova geração do futebol." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775451375/FIFA26_bi1wnb.mp4">
+  </div>
+
+  <div class="card-container">
+    <span class="rank-number">5</span>
+    <img src="https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-ragnarok-store-art-01-10sep21$ru?$800px--t$" 
+         class="poster-img" 
+         data-title="God of War Ragnarok" 
+         data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/92554480-bde6-4f5c-9861-7022237da1ce/dfk2top-494d7ab4-4d24-4455-bcda-402bf76378d6.png/v1/fill/w_1024,h_277/god_of_war_ragnarok_logo_by_brsbr_dfk2top-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Mjc3IiwicGF0aCI6Ii9mLzkyNTU0NDgwLWJkZTYtNGY1Yy05ODYxLTcwMjIyMzdkYTFjZS9kZmsydG9wLTQ5NGQ3YWI0LTRkMjQtNDQ1NS1iY2RhLTQwMmJmNzYzNzhkNi5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.KNYp9QreC-k_Wmb-HqRtR4VeFLImmeSWYDXwwt4pNMM"
+         data-desc="Pai e Filho contra o Impossível. Juntos, eles devem atravessar os Nove Reinos e escolher entre o peso do passado e a esperança do futuro." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775451159/ragnarog_n7g4lc.mp4">
+  </div>
+
+  <div class="card-container">
+    <span class="rank-number">6</span>
+    <img src="https://www.productsleutels.nl/wp-content/uploads/2021/01/Cyberpunk-2077-PC-COVER.jpg" 
+         class="poster-img" 
+         data-title="Cyberpunk 2077" 
+         data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Cyberpunk_2077_logo.svg/3840px-Cyberpunk_2077_logo.svg.png"
+         data-desc="O futuro é uma armadilha. Roube o protótipo da imortalidade, enfrente corporações impiedosas e molde o destino de Night City com suas escolhas." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775455010/2077_zyocs8.mp4">
+  </div>
+
+  <div class="card-container">
+    <span class="rank-number">7</span>
+    <img src="https://m.media-amazon.com/images/M/MV5BODIwYWZmYWMtYTliNC00YWQ5LTg5ZmEtNTZhNmUxNjdiMzNiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+         class="poster-img" 
+         data-title="The Last Of Us II" 
+         data-logo="https://gamerview.com.br/wp-content/uploads/2020/06/the-last-of-us-part-2-logo.png"
+         data-desc="Perdoe ou destrua. Em um mundo devastado, as maiores cicatrizes não são físicas. Sobreviver é apenas o começo.." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775454979/the_last_hlfyjn.mp4">
+  </div>
+
+  <div class="card-container">
+    <span class="rank-number">8</span>
+    <img src="https://bdjogos.com.br/capas/24175-call-of-duty-black-ops-6-capa-1.webp" 
+         class="poster-img" 
+         data-title="Black OPS 6" 
+         data-logo="https://pbs.twimg.com/media/GORUbGjWIAEDNY6.png"
+         data-desc="Esqueça o que você sabe. Mergulhe nas sombras da Guerra Fria e descubra a verdade por trás das operações que o governo nega existir." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775454969/bo6_ihhjx7.mp4">
+  </div>
+
+  <div class="card-container">
+    <span class="rank-number">9</span>
+    <img src="https://cdn1.epicgames.com/offer/b2818b59c0bb420e9647983dfd254931/EGS_MarvelsSpiderManDigitalDeluxeEdition_InsomniacGamesNixxesSoftware_Editions_S2_1200x1600-148e0014e79aa7c2cb23ae2414b11a16" 
+         class="poster-img" 
+         data-title="Spider-Man 2" 
+         data-logo="https://upload.wikimedia.org/wikipedia/commons/2/25/Marvel%27s_Spider-Man_2_%282025%29_logo_official_%28SGDB_124347%29.png"
+         data-desc="Explore uma Nova York expandida com as novas Asas de Teia e viva a experiência definitiva do Amigão da Vizinhança." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775455006/spider_jo0qyh.mp4">
+  </div>
+
+  <div class="card-container">
+    <span class="rank-number">10</span>
+    <img src="https://bdjogos.com.br/capas/6265-the-witcher-3-wild-hunt-capa-1.jpg" 
+         class="poster-img" 
+         data-title="The Whitcher 3" 
+         data-logo="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1775455305/pngimg.com_-_witcher_PNG48_whepoi.png"
+         data-desc="Rastreie o perigo. Proteja o que importa. Mergulhe na obra-prima do RPG de fantasia onde cada escolha carrega um preço de sangue." 
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!"
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775455011/3_frmvjn.mp4">
+  </div>
+
+</div>
+       <button onclick="scrollTop10Right()">⮞</button>
+</div>
+    
+<div class="floating-btn-container">
+  <a href="https://gameflix2.github.io/ESCOLHA-SEU-PACK/" target="_blank" style="text-decoration: none;">
+    <button class="netflix-btn">VEJA NOSSOS PLANOS AQUI</button>
+  </a>
+  </a>
+</div>
+    </div>
+
+     <h2>TOP 20 DOS LENDARIOS MAIS BAIXADOS DA GAMEFLIX</h2>
+<div class="top-10-container">
+ 
+
+  <!-- BOTÃO ESQUERDA -->
+  <button onclick="scrollTop20Left()">❮</button>
+
+  <!-- LISTA -->
+ <div class="games-scroll" id="top20">
+    
+
+    <img class="game-card" 
+     src="https://cdn.loaded.com/496x700/media/catalog/product/r/e/resident_evil_requiem_cdkeys_1.png" 
+     alt="RE 9 REQUIM" 
+     data-title="Resident Evil 9: Requiem" 
+     data-desc="O capítulo final da saga Winters? Ou um novo despertar para o bioterrorismo? Prepare-se para o próximo nível de horror de sobrevivência." 
+     data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772427160/Resident_Evil_Requiem_-_Launch_Trailer_-_Resident_Evil_1080p_h264_qrswi7.mp4" 
+     data-logo="https://cdn2.steamgriddb.com/logo/5b91726d21e05916d2eb308f2fd0444e.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+     onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://upload.wikimedia.org/wikipedia/pt/e/e7/Red_Dead_Redemption_2.png" 
+         alt="Red Dead Redemption 2" 
+         data-title="Red Dead Redemption 2" 
+         data-desc="Fora da lei por toda a vida. Herói por escolha? Reviva a trajetória épica de lealdade, perda e redenção em Red Dead Redemption 2. O pôr do sol nunca foi tão perigoso." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1771734264/red_dead_2_hsqfm7.mp4" 
+         data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Red_Dead_Redemption_2_Logo.png/1280px-Red_Dead_Redemption_2_Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/0c40923dd1174a768f732a3b013dcff2/EGS_TheLastofUsPartIDigitalDeluxeEdition_NaughtyDogLLC_Editions_S2_1200x1600-6db4887c7913c5a43ae3a086de2ad29c" 
+           alt="TLoU I" 
+           data-title="The Last of Us Part I" 
+           data-desc="Uma jornada emocionante por um mundo brutal e perigoso." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775618696/LAST_1_y11shn.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/1956768b78ac039215c9600c9691c572.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://assets-prd.ignimgs.com/2022/05/27/9781506732022-1653620982308.jpg" 
+         alt="Horizon Forbidden West" 
+         data-title="Horizon Forbidden West" 
+         data-desc="Novas máquinas, novas tribos e um mundo vasto para explorar. A jornada de Aloy continua em Horizon Forbidden West. A sobrevivência exige evolução." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494601/west_xoqu1g.mp4" 
+         data-logo="https://cdn2.steamgriddb.com/logo_thumb/0a31b8b048c10332ece27bef9670bda8.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://cdn1.epicgames.com/offer/6e6aa039c73347b885803de65ac5d3db/EGS_GhostofTsushima_SuckerPunchProductions_S2_1200x1600-e23e02c1d70be7b528dba50860f87d39" 
+         alt="Ghost of Tsushima" 
+         data-title="Ghost of Tsushima" 
+         data-desc="No final do século XIII, o império mongol devastou nações inteiras. Jin Sakai deve ir além das tradições samurai para libertar Tsushima." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494578/gosth_wnmj25.mp4" 
+         data-logo="https://cdn2.steamgriddb.com/logo/f894cbc7551b7dea91a6aa9fbfc95c21.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-ragnarok-store-art-01-10sep21$ru?$800px--t$" 
+         alt="God of War Ragnarök" 
+         data-title="God of War Ragnarök" 
+         data-desc="Kratos e Atreus devem viajar pelos Nove Reinos em busca de respostas enquanto as forças asgardianas se preparam para a guerra profetizada." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775451159/ragnarog_n7g4lc.mp4" 
+         data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/92554480-bde6-4f5c-9861-7022237da1ce/dfk2top-494d7ab4-4d24-4455-bcda-402bf76378d6.png/v1/fill/w_1024,h_277/god_of_war_ragnarok_logo_by_brsbr_dfk2top-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Mjc3IiwicGF0aCI6Ii9mLzkyNTU0NDgwLWJkZTYtNGY1Yy05ODYxLTcwMjIyMzdkYTFjZS9kZmsydG9wLTQ5NGQ3YWI0LTRkMjQtNDQ1NS1iY2RhLTQwMmJmNzYzNzhkNi5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.KNYp9QreC-k_Wmb-HqRtR4VeFLImmeSWYDXwwt4pNMM"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://meups.com.br/wp-content/uploads/2025/10/Battlefield-6-REVIEW-PS5-scaled.jpg" 
+         alt="BF V" 
+         data-title="Battlefield V" 
+         data-desc="Entre no maior conflito da humanidade com Battlefield V enquanto a série retorna às suas raízes na Segunda Guerra Mundial." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+         data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://www.productsleutels.nl/wp-content/uploads/2021/01/Cyberpunk-2077-PC-COVER.jpg" 
+         alt="Cyberpunk" 
+         data-title="Cyberpunk 2077" 
+         data-desc="Um RPG de ação e aventura em mundo aberto ambientado na megalópole de Night City, onde você joga como um mercenário urbano." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775455010/2077_zyocs8.mp4" 
+         data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Cyberpunk_2077_logo.svg/3840px-Cyberpunk_2077_logo.svg.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://bdjogos.com.br/capas/6265-the-witcher-3-wild-hunt-capa-1.jpg" 
+         alt="Witcher 3" 
+         data-title="The Witcher 3: Wild Hunt" 
+         data-desc="Torne-se um caçador de monstros profissional e embarque em uma aventura de proporções épicas." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775455011/3_frmvjn.mp4" 
+         data-logo="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1775455305/pngimg.com_-_witcher_PNG48_whepoi.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://image.api.playstation.com/vulcan/ap/rnd/202306/1301/0a5face6e59f61c2ed7f9423c778b10f2e4b8cada54d164f.png" 
+         alt="Spider-Man 2" 
+         data-title="Marvel's Spider-Man 2" 
+         data-desc="Os Spiders Peter Parker e Miles Morales enfrentam a prova definitiva de força ao lutar para salvar a cidade e um ao outro." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775455006/spider_jo0qyh.mp4" 
+         data-logo="https://upload.wikimedia.org/wikipedia/commons/2/25/Marvel%27s_Spider-Man_2_%282025%29_logo_official_%28SGDB_124347%29.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://bdjogos.com.br/capas/24175-call-of-duty-black-ops-6-capa-1.webp" 
+         alt="CoD HQ" 
+         data-title="Call of Duty: Black Ops 6" 
+         data-desc="Ação de tirar o fôlego e espionagem de alto risco no mais novo capítulo da franquia Black Ops." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775454969/bo6_ihhjx7.mp4" 
+         data-logo="https://pbs.twimg.com/media/GORUbGjWIAEDNY6.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://upload.wikimedia.org/wikipedia/pt/3/30/Resident_Evil_4_%28remake%29.png" 
+         alt="RE 4" 
+         data-title="Resident Evil 4 Remake" 
+         data-desc="Sobrevivência é apenas o começo. Seis anos se passaram desde o desastre biológico em Raccoon City." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494715/4_remake_qt7c44.mp4" 
+         data-logo="https://i.psnprofiles.com/guides/16426/c91425.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">´
+
+    <img class="game-card" 
+         src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1775710602/days-gone-remastered-2025--30418_ubwfjm.jpg" 
+         alt="Days Gone" 
+         data-title="Days Gone" 
+         data-desc="Ande e lute por um Noroeste Pacífico pós-pandêmico e letal como o motoqueiro errante Deacon St. John." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494762/gone_naoaf3.mp4" 
+         data-logo="https://media.gamestop.com/i/gamestop/days-gone-logo/days-gone.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://hobbygames.ru/image/enaza/19184698/box2.jpg.jpg" 
+         alt="Wukong" 
+         data-title="Black Myth: Wukong" 
+         data-desc="Um RPG de ação baseado na mitologia chinesa. Você partirá em uma jornada como o Predestinado para desvendar a verdade obscurecida." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494433/kong_modq29.mp4" 
+         data-logo="https://www.pngall.com/wp-content/uploads/15/Black-Myth-Wukong-Logo-Chinese-Game-PNG.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+           src="https://e.snmc.io/lk/f/x/2f5dbf23974d6391c11c7b5b2fce6bb0/9667231" 
+           alt="Assetto Corsa" 
+           data-title="Assetto Corsa" 
+           data-desc="O simulador de corridas mais realista, com carros e pistas licenciados." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622634/CORSA_xykfmc.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/fi/a/a0/Assetto_Corsa_Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+    <img class="game-card" 
+         src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1771886278/Captura_de_tela_2026-02-23_185713_cljm2d.png" 
+         alt="FIFA 26" 
+         data-title="EA SPORTS FC 26" 
+         data-desc="O jogo de todo mundo. Sinta a emoção do futebol com o maior realismo já visto em um simulador de esporte." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775451375/FIFA26_bi1wnb.mp4" 
+         data-logo="https://fifauteam.com/images/fc26/logo/long-green.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://upload.wikimedia.org/wikipedia/pt/e/e9/Assassins_Creed_Valhalla_capa.png" 
+         alt="AC Valhalla" 
+         data-title="Assassin's Creed Valhalla" 
+         data-desc="Torne-se Eivor, uma lenda viking em busca de glória. Explore a Idade das Trevas da Inglaterra enquanto ataca seus inimigos." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494678/vallhala_b0onha.mp4" 
+         data-logo="https://cdn2.steamgriddb.com/logo_thumb/7a963088b715398a4438ad53935af1cb.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000089518/cc83ebef3be669c8fcc66f9c53e3c6e6dabf5cbc44947c9e1c7e5febeb254ee6" 
+         alt="Bodycam" 
+         data-title="Bodycam" 
+         data-desc="Um jogo de tiro em primeira pessoa ultra-realista que utiliza as capacidades da Unreal Engine 5 para uma imersão total." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494629/cam_h7g6rs.mp4" 
+         data-logo="https://cdn2.steamgriddb.com/logo/72424d6a9bd473f2f265c35df9751aaa.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://m.media-amazon.com/images/I/71kj4+Y5bHL._AC_UF1000,1000_QL80_.jpg" 
+         alt="MK 1" 
+         data-title="Mortal Kombat 1" 
+         data-desc="Descubra um universo de Mortal Kombat renascido, criado pelo Deus do Fogo Liu Kang. Um novo começo para a franquia." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494382/mortal_ojdfos.mp4" 
+         data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1d36d2cf-42e6-4629-a20a-a69ebb66bf05/dg8jmln-5f735c2d-2f12-419e-a8e6-6b95a45a0945.png/v1/fill/w_1280,h_995/mortal_kombat_1_logo_transparent_by_suleymanlikenan_dg8jmln-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTk1IiwicGF0aCI6Ii9mLzFkMzZkMmNmLTQyZTYtNDYyOS1hMjBhLWE2OWViYjY2YmYwNS9kZzhqbWxuLTVmNzM1YzJkLTJmMTItNDE5ZS1hOGU2LTZiOTVhNDVhMDk0NS5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.m3Rz7JKFxtLF6-g4FAuStRR9ezxXax5FhWXKEgHjcC8"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://image.api.playstation.com/vulcan/ap/rnd/202208/1118/eqqPM2rRA1KnVNQuNkh4BhFn.png" 
+           alt="Dead Island 2" 
+           data-title="Dead Island 2" 
+           data-desc="Um RPG de ação em primeira pessoa vibrante e cheio de zumbis em Los Angeles." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775619232/SLAND_emweco.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/316134129f3d51513c1f9c5d8b2d7ee8.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+    <img class="game-card" 
+         src="https://cdn1.epicgames.com/offer/8b2d6cf2b45b41f1abe91bc5b7c1e8f9/EGS_UNCHARTEDLegacyofThievesCollection_NaughtyDogLLC_S2_1200x1600-9deaa177d8716bde5478cdd75d850c9c" 
+         alt="Uncharted" 
+         data-title="Uncharted: Legacy of Thieves Collection" 
+         data-desc="Busque seu legado e deixe sua marca no mapa em UNCHARTED: Coleção Legado dos Ladrões." 
+         data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494703/legacy_umnyyk.mp4" 
+         data-logo="https://upload.wikimedia.org/wikipedia/pt/d/d8/Uncharted_The_Lost_Legacy_logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+         onclick="openWppModal()">
+
+  </div>  
+   <button onclick="scrollTop20Right()">❯</button>
+</div>
+
+
+
+<div class="row">
+  <h2>Franquia Call of Duty</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+     <img class="game-card" 
+           src="https://images6.alphacoders.com/139/thumb-1920-1397239.jpg" 
+           alt="Black Ops 7" 
+           data-title="Black Ops 7" 
+           data-desc="Acompanhe David Mason em 2035 enfrentando uma nova ameaça global em uma campanha intensa e tecnológica." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775609445/7_mumsy5.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/809d4bb5b3045d4d0b4be6f71c4094f3.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://bdjogos.com.br/capas/24175-call-of-duty-black-ops-6-capa-1.webp" 
+           alt="CoD HQ" 
+           data-title="Black Ops 6" 
+           data-desc="Ação de espionagem alucinante ambientada no início dos anos 90." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775611006/black_opS_6_zu0ob5.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/c3b0f4fac5389d3733c9c07a835fea73.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjG5gD2EPSegoWpyI0LAvVz1rzUV-MKZRmdDJXWuuCZLweBOAyrkpYNlxQ7FGomhRI6-IUA-IpPTxQh2iaYQNJceG03XR8puhMXRIfAluevOg9swrtBDItBQ_E1wPHcrxPz2Eovkktf03LupJPzy9_T6xJtIt79Xhz7LisCBS5aWtlbwiWYmurF1ckSJF2i/s16000/portalfps-call-of-duty-modern-warfare-iii-wallpaper.jpg" 
+           alt="MW III" 
+           data-title="Modern Warfare III" 
+           data-desc="Capitão Price e a Força-Tarefa 141 enfrentam a ameaça definitiva: Vladimir Makarov." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775611028/MIIIW_RED_swyrtq.mp4" 
+           data-logo="https://static.wikia.nocookie.net/logopedia/images/5/50/MWIII_2023.png/revision/latest?cb=20230810190707"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://m.media-amazon.com/images/I/81mUtFXhFCL.jpg" 
+           alt="MW II" 
+           data-title="Modern Warfare II" 
+           data-desc="O retorno da icônica Força-Tarefa 141 em missões globais táticas e intensas." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775611009/MIIW_verde_klvl2c.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/41eb08efab98ba98e7f12c1f42f065c7.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     
+      <img class="game-card" 
+           src="https://bdjogos.com.br/capas/7290-call-of-duty-black-ops-iii-capa-1.jpg" 
+           alt="Black Ops III" 
+           data-title="Black Ops III" 
+           data-desc="Um futuro sombrio onde as fronteiras entre humanidade e tecnologia militar se tornam confusas." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775609876/OPS_3_sty3wi.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/6262fd2e1b7db9411e4d47ad093a1397.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      
+      <img class="game-card" 
+           src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjShfiHr6QsUdVkqkBfeIaVf0uWzcs6cX4zYwFJMNrs8KwxLb63dP0d_w3VoF8jd0cASElB8Xkqun8zpGNyDzE4gE3M-Dcg0_c3HD070hlwAvMhmx9WHGoAs47c-C0l4PAyQlZ1m9tUeid-/s1600/CALL-OF-DUTY-WWII-1080P-Wallpaper-1.jpg" 
+           alt="CoD WWII" 
+           data-title="Call of Duty: WWII" 
+           data-desc="A série retorna às suas raízes com uma experiência que redefine a Segunda Guerra Mundial." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775610836/ww2_vnvecq.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/6/6f/CoD_WWII_Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdn.europosters.eu/image/1300/15042.jpg" 
+           alt="Ghosts" 
+           data-title="Call of Duty: Ghosts" 
+           data-desc="Lute por uma nação devastada não por liberdade, mas pela simples sobrevivência." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775610797/ghost_zc6att.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/ce96b83ed270d644c1922211c81c8e72.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://store-images.s-microsoft.com/image/apps.703.13739535057760905.34778648-088c-45a3-9d45-1117ca041901.c4d90513-3be4-4a22-9cd6-85a7ffa8df7f" 
+           alt="warezone" 
+           data-title="Call of Duty warezone" 
+           data-desc="Vivencie a intensidade da Segunda Guerra Mundial em combates implacáveis." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775609876/OPS_3_sty3wi.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/96efe793e5f26bb330aac125634554ba.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()"> 
+
+            <img class="game-card" 
+           src="https://m.media-amazon.com/images/M/MV5BNzczN2VmMzEtNTk4NS00OTk0LTg4MWYtZWVkYzQ0MzE2NmQ4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+           alt="MW 2019" 
+           data-title="Modern Warfare (2019)" 
+           data-desc="Uma releitura visceral e realista da série Modern Warfare, focada em operações especiais secretas." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775610810/2019_v0b04y.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/accd5a5480c79baadc2a8cdf8e253dd6.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+
+
+      <img class="game-card" 
+           src="https://cdn.loaded.com/496x700/media/catalog/product/c/a/call-of-duty-vanguard-xbox-one-xbox-one-game-microsoft-store-cover_1__3.jpg" 
+           alt="Vanguard" 
+           data-title="Call of Duty: Vanguard" 
+           data-desc="Vivencie as origens das Forças Especiais em diversas frentes da Segunda Guerra Mundial." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775611053/vanguard_ncqjn4.mp4" 
+           data-logo="https://images.seeklogo.com/logo-png/43/2/call-of-duty-vanguard-logo-png_seeklogo-438737.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+    </div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+
+<div class="row">
+  <h2>Terror e Sobrevivência</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+      <img class="game-card" 
+           src="https://image.api.playstation.com/vulcan/ap/rnd/202208/1118/eqqPM2rRA1KnVNQuNkh4BhFn.png" 
+           alt="Dead Island 2" 
+           data-title="Dead Island 2" 
+           data-desc="Um RPG de ação em primeira pessoa vibrante e cheio de zumbis em Los Angeles." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775619232/SLAND_emweco.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/316134129f3d51513c1f9c5d8b2d7ee8.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+            <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/0c40923dd1174a768f732a3b013dcff2/EGS_TheLastofUsPartIDigitalDeluxeEdition_NaughtyDogLLC_Editions_S2_1200x1600-6db4887c7913c5a43ae3a086de2ad29c" 
+           alt="TLoU I" 
+           data-title="The Last of Us Part I" 
+           data-desc="Uma jornada emocionante por um mundo brutal e perigoso." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775618696/LAST_1_y11shn.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/1956768b78ac039215c9600c9691c572.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/7713e3fa4b234e0d8f553044205d53b6/EGS_TheLastofUsPartIIRemastered_NaughtyDogLLCNixxesSoftwareIronGalaxy_S2_1200x1600-2e13755a6b3fec2ee9dbcc231a1cf39c" 
+           alt="TLoU II" 
+           data-title="The Last of Us Part II" 
+           data-desc="Cinco anos após sua jornada perigosa, Ellie e Joel se estabeleceram em Jackson." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775454979/the_last_hlfyjn.mp4" 
+           data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/078277ed-5380-4deb-b166-997beba79634/dggm0hv-bedf4534-b272-43b1-ae3c-ffa737cbfab5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi8wNzgyNzdlZC01MzgwLTRkZWItYjE2Ni05OTdiZWJhNzk2MzQvZGdnbTBodi1iZWRmNDUzNC1iMjcyLTQzYjEtYWUzYy1mZmE3MzdjYmZhYjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Dj96wEDpwXCslbaHWOf4FdMRG2X0yxNIp3lLYJAkyk0"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+           <img class="game-card" 
+     src="https://cdn.loaded.com/496x700/media/catalog/product/r/e/resident_evil_requiem_cdkeys_1.png" 
+     alt="RE 9 REQUIM" 
+     data-title="Resident Evil 9: Requiem" 
+     data-desc="O capítulo final da saga Winters? Ou um novo despertar para o bioterrorismo? Prepare-se para o próximo nível de horror de sobrevivência." 
+     data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772427160/Resident_Evil_Requiem_-_Launch_Trailer_-_Resident_Evil_1080p_h264_qrswi7.mp4" 
+     data-logo="https://cdn2.steamgriddb.com/logo/5b91726d21e05916d2eb308f2fd0444e.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+     onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://tm.ibxk.com.br/2021/05/05/05040759331000.jpg" 
+           alt="RE Village" 
+           data-title="Resident Evil Village" 
+           data-desc="Ethan Winters busca sua filha em uma vila tomada por criaturas aterrorizantes." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775618683/VILLAGE_la1tsr.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/2/2c/Resident_Evil_Village.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+            <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/3/30/Resident_Evil_4_%28remake%29.png" 
+           alt="RE 4" 
+           data-title="Resident Evil 4 Remake" 
+           data-desc="Leon S. Kennedy enfrenta horrores inimagináveis para resgatar a filha do presidente." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494715/4_remake_qt7c44.mp4" 
+           data-logo="https://i.psnprofiles.com/guides/16426/c91425.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://howlongtobeat.com/games/72822_Resident_Evil_3_(2020).jpg" 
+           alt="RE 3" 
+           data-title="Resident Evil 3 (2020)" 
+           data-desc="A fuga desesperada de Jill Valentine de Raccoon City e da ameaça Nemesis." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772474147/RESIDENTE_EVIL_3_qqvli7.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/fr/archive/b/b4/20221107130840%21Resident_Evil_3_Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://static.wikia.nocookie.net/game-pedia/images/5/59/ResidentEvil7_Biohazard.jpeg/revision/latest?cb=20230110134349&path-prefix=de" 
+           alt="RE 7" 
+           data-title="Resident Evil 7: Biohazard" 
+           data-desc="O medo e o isolamento se infiltram nas paredes de uma fazenda abandonada no sul." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775618687/RE7_imggz0.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/6bfd090bb5caa368088b8954da79077a.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+           <img class="game-card" 
+           src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1775710602/days-gone-remastered-2025--30418_ubwfjm.jpg" 
+           alt="Days Gone" 
+           data-title="Days Gone" 
+           data-desc="Sobreviva em um mundo devastado por uma pandemia global jogando com o andarilho Deacon St. John." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494762/gone_naoaf3.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/e0e0efac42bf67642b4904c893b46725.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+
+           
+      
+      <img class="game-card" 
+           src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0cd47e73-13d0-4574-99e7-6989ec6ac3fc/dg675d8-f9cebeeb-76b9-4bf3-9ffc-5e05db5c9db6.png/v1/fill/w_1280,h_1815,q_80,strp/resident_evil_5__2009____poster_by_thepatchedvest_dg675d8-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTgxNSIsInBhdGgiOiIvZi8wY2Q0N2U3My0xM2QwLTQ1NzQtOTllNy02OTg5ZWM2YWMzZmMvZGc2NzVkOC1mOWNlYmVlYi03NmI5LTRiZjMtOWZmYy01ZTA1ZGI1YzlkYjYucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.b9g4fE6oFpxVsRwVFhJ66M3Oe5vQsVH78W2jzQjtqBU" 
+           alt="RE 5" 
+           data-title="Resident Evil 5" 
+           data-desc="Chris Redfield enfrenta uma nova ameaça biológica no sol escaldante da África." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775619261/RE5_ivekzl.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/2754518221cfbc8d25c13a06a4cb8421.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     
+
+     
+
+      <img class="game-card" 
+           src="https://store-images.s-microsoft.com/image/apps.23097.69886306496288395.9ec42146-6037-4440-b5c7-3a44e5213cc3.0e09163e-a6c4-40f6-9fe1-24a6b4685c64" 
+           alt="DayZ" 
+           data-title="DayZ" 
+           data-desc="Sobreviva em um mundo pós-apocalíptico implacável dominado por infectados." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775619252/DAYZ_alyjpt.mp4" 
+           data-logo="https://logodix.com/logo/554722.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     
+      <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/87b7846d2eba4bc49eead0854323aba8/EGS_DyingLight2StayHumanReloadedEdition_Techland_S2_1200x1600-76cef594ff94fbac64a8af1ebe4c7590" 
+           alt="Dying Light 2" 
+           data-title="Dying Light 2: Stay Human" 
+           data-desc="A humanidade está perdendo a luta contra o vírus. O destino da cidade está em suas mãos." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775618674/DYNG_pv1k3h.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/d773061e2a645bc7db7508d45aec693d.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     
+
+           <img class="game-card" 
+           src="https://cdn.mobygames.com/covers/2299574-resident-evil-6-xbox-one-front-cover.jpg" 
+           alt="RE 6" 
+           data-title="Resident Evil 6" 
+           data-desc="Ação e terror em escala global com heróis icônicos da franquia." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775618707/RE6_s8pyby.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/05e97c207235d63ceb1db43c60db7bbb.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     
+ <img class="game-card" 
+           src="https://m.media-amazon.com/images/I/71D76nsyDOL._AC_UF1000,1000_QL80_.jpg" 
+           alt="RE 2" 
+           data-title="Resident Evil 2 (2019)" 
+           data-desc="Leon e Claire tentam sobreviver ao surto zumbi em Raccoon City." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775619253/RE2_rudjt2.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/fr/3/3e/Logo_Resident_Evil_2_%282019%29.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+            <img class="game-card" 
+           src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2835530/54a47a9c7f91ae79f5c131d75df9d0e2feb9133e/capsule_616x353.jpg?t=1771657999" 
+           alt="Backrooms" 
+           data-title="Escape the Backrooms" 
+           data-desc="Explore os níveis infinitos e assustadores das Backrooms." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775619194/BACKROOS_pc0qmy.mp4" 
+           data-logo="https://backroomsextractions.com/images/logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+    </div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+<div class="row">
+  <h2>Corrida e Esportes</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+       <img class="game-card" 
+           src="https://e.snmc.io/lk/f/x/2f5dbf23974d6391c11c7b5b2fce6bb0/9667231" 
+           alt="Assetto Corsa" 
+           data-title="Assetto Corsa" 
+           data-desc="O simulador de corridas mais realista, com carros e pistas licenciados." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622634/CORSA_xykfmc.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/fi/a/a0/Assetto_Corsa_Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://image.api.playstation.com/vulcan/ap/rnd/202109/1321/3mjMyRiJaq8lw1EFWiTCUJRV.png" 
+           alt="Gran Turismo 7" 
+           data-title="Gran Turismo 7" 
+           data-desc="O simulador de direção real definitivo. Com mais de 400 carros e pistas icônicas, sinta cada curva com um realismo sem precedentes e gráficos de tirar o fôlego" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622617/GRAMTURISMO_7_xpbrpb.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/22d8c2229625f3fbfc8626b376b65deb.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://azitech.com.br/wp-content/uploads/2024/08/Forza-Horizon-6-lancamento.jpg" 
+           alt="FH 6" 
+           data-title="Forza Horizon 6" 
+           data-desc="Sua aventura Horizon definitiva espera por você!" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622651/FORZA_6_t0fheq.mp4" 
+           data-logo="https://static.wikia.nocookie.net/logopedia/images/c/c9/Forza_Horizon_6.png/revision/latest?cb=20250925125338"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/d/dc/Capa_de_Forza_Horizon_5.jpg" 
+           alt="Fh5" 
+           data-title="Forza Horizon 5 " 
+           data-desc="O festival de automobilismo mais famoso do mundo volta com gráficos em 4K nativo e físico de pneus ultra-realistas. Acelere no próximo nível." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494623/f5_qfqspo.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/98c2ca0a994619f0623700f58c77e3d5.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://m.media-amazon.com/images/M/MV5BNDk2NmRkOTQtYWM5Zi00MTBjLWEwZjktM2FmY2U5YWNkZGM0XkEyXkFqcGc@._V1_.jpg" 
+           alt="Motorsport" 
+           data-title="Forza Motorsport" 
+           data-desc="Supere a competição no novo modo carreira e em eventos multijogador." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775450006/forza_wvbezf.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/5cc085288d7afc9d76f6aa846b7e5d5f.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdnb.artstation.com/p/assets/images/images/019/956/143/large/mighoet-sundback-nfs-heat-cover.jpg?1565732891" 
+           alt="NFS Heat" 
+           data-title="Need for Speed Heat" 
+           data-desc="Trabalhe duro durante o dia e arrisque tudo à noite em corridas de rua." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622573/HEAT_duhs45.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/946c375daff5856fbf406371179bb997.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://images.steamusercontent.com/ugc/5109928331639408171/D260688DBD1EBFEF65BABF0D2E6956D8391E72B3/" 
+           alt="NFS Payback" 
+           data-title="Need for Speed Payback" 
+           data-desc="Sua equipe está reunida para se vingar contra o Clã em Fortune Valley." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622585/PLAYBACK_zijs3n.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/3dd6cfec510eae9cb9951c5099c97701.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://media.vandal.net/m/16160/need-for-speed-most-wanted-20162383311_1.jpg" 
+           alt="NFS Most Wanted" 
+           data-title="Need for Speed Most Wanted" 
+           data-desc="Seja o mais procurado enquanto foge de uma força policial implacável." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622593/MONST_roystj.mp4" 
+           data-logo="https://cdn1.epicgames.com/spt-assets/5d07664430944a95ae550da120ed0eeb/need-for-speed-most-wanted-logo-3pa8y.png?resize=1&w=480&h=270&quality=medium"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://m.media-amazon.com/images/M/MV5BNmFkNzc3MDMtYzY4MC00NTI5LWI2M2QtYjZiM2M1MWE4NjJlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+           alt="NFS 2015" 
+           data-title="Need for Speed (2015)" 
+           data-desc="Descubra um mundo aberto noturno de cultura urbana de carros." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622567/NFS_d0i1kn.mp4" 
+           data-logo="https://logosmarcas.net/wp-content/uploads/2021/10/Need-For-Speed-Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/82aa77fde0b14916a86b66b1e6345c30/EGS_RIDE5_MilestoneSrl_S2_1200x1600-abc515266abe022f93ee7517ca8ec7fa" 
+           alt="Ride 5" 
+           data-title="Ride 5" 
+           data-desc="Ligue o motor e entre na pista com RIDE 5." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622514/RIDE_ssyxid.mp4" 
+           data-logo="https://ride5.ridevideogame.com/wp-content/uploads/2023/03/Ride5_Logo_RGB_OnBlack-2048x725.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+    
+
+      <img class="game-card" 
+           src="https://sm.ign.com/ign_br/cover/f/farming-si/farming-simulator-25_p1nu.jpg" 
+           alt="FS 25" 
+           data-title="Farming Simulator 25" 
+           data-desc="Expanda sua fazenda com novas máquinas e culturas." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775622602/SIMULEITOR_idmpxc.mp4" 
+           data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c907b781-0ad6-4ed3-86b0-f800bafa510f/diimq5d-5378f560-a92f-46b7-be35-769c2907fd87.png/v1/fill/w_800,h_310/farming_simulator_25_logo_by_craig_lowe_diimq5d-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MzEwIiwicGF0aCI6Ii9mL2M5MDdiNzgxLTBhZDYtNGVkMy04NmIwLWY4MDBiYWZhNTEwZi9kaWltcTVkLTUzNzhmNTYwLWE5MmYtNDZiNy1iZTM1LTc2OWMyOTA3ZmQ4Ny5wbmciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.IFdCs7CMdNuSHlYPRNFBWhKgGLnNWc-GjmSKkzz5NEo"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+    </div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+
+<div class="row">
+  <h2>Soulslike e RPG de Ação</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+      <img class="game-card" 
+           src="https://assets.xboxservices.com/assets/7b/54/7b54f5e4-0857-4ce3-8a18-2b8c431e8a9e.jpg?n=Elden-Ring_GLP-Page-Hero-0_1083x1222_01.jpg" 
+           alt="Elden Ring" 
+           data-title="Elden Ring" 
+           data-desc="Levante-se, Maculado, e seja guiado pela graça para portar o poder do Anel Príncipio." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772073320/ELDEN_yfkx0p.mp4" 
+           data-logo="https://www.pngall.com/wp-content/uploads/13/Elden-Ring-Logo-PNG-File.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://hobbygames.ru/image/enaza/19184698/box2.jpg.jpg" 
+           alt="Wukong" 
+           data-title="Black Myth: Wukong" 
+           data-desc="Um RPG de ação inspirado na mitologia chinesa e no romance Jornada ao Oeste." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494433/kong_modq29.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/2cb20cf1015104c145ddd098f482005e.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://img.elo7.com.br/product/zoom/4C5B3FA/quadro-decorativo-game-lies-of-p-rpg-com-moldura-a3-lies-of-p.jpg" 
+           alt="Lies of P" 
+           data-title="Lies of P" 
+           data-desc="Um soulslike emocionante que adapta a história de Pinóquio em um mundo sombrio." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/77947f1bbfcfa47ce2686b9a2a5823e9.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://image.api.playstation.com/cdn/HP0700/CUSA03434_00/9Lvijwqww6gvFTsciIzMWqs61DlOg8xIAsomficGKF6g7z6bYgrYGAoG80gr87pw.png" 
+           alt="DS III" 
+           data-title="Dark Souls III" 
+           data-desc="Só restam as brasas... prepare-se para abraçar a escuridão." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://media.gamestop.com/i/gamestop/dark-souls-3-logo/dark-souls-3.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://m.media-amazon.com/images/M/MV5BMTM4N2JjZTEtNzE2YS00MTdmLTg1NTctZjVkNGFlOWU5OWFmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+           alt="DS II Scholar" 
+           data-title="Dark Souls II: Scholar of the First Sin" 
+           data-desc="A experiência definitiva de Dark Souls II com novos desafios e segredos." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://image.api.playstation.com/vulcan/img/rnd/202011/0203/zoxs4BV7UufSeFj0fQ5mDyZl.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+           <img class="game-card" 
+           src="https://images3.alphacoders.com/117/thumb-1920-117095.jpg" 
+           alt="Skyrim" 
+           data-title="The Elder Scrolls V: Skyrim" 
+           data-desc="O épico de fantasia em mundo aberto da Bethesda Game Studios." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://blog.logomyway.com/wp-content/uploads/2021/08/skyrim-logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      
+      <img class="game-card" 
+           src="https://bdjogos.com.br/capas/6265-the-witcher-3-wild-hunt-capa-1.jpg" 
+           alt="Witcher 3" 
+           data-title="The Witcher 3: Wild Hunt" 
+           data-desc="Torne-se Geralt de Rívia, um caçador de monstros em um mundo aberto massivo." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775455011/3_frmvjn.mp4" 
+           data-logo="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1775455305/pngimg.com_-_witcher_PNG48_whepoi.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://www.productsleutels.nl/wp-content/uploads/2021/01/Cyberpunk-2077-PC-COVER.jpg" 
+           alt="Cyberpunk" 
+           data-title="Cyberpunk 2077" 
+           data-desc="Torne-se um mercenário urbano em Night City, uma megalópole obcecada por poder." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775455010/2077_zyocs8.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Cyberpunk_2077_logo.svg/3840px-Cyberpunk_2077_logo.svg.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/c8738a4d1ead40368eab9688b3c7d737/EGS_SkyrimSpecialEdition_BethesdaGameStudios_S2_1200x1600-ae5d13f6510e81460fe80aa1ca19cf4c" 
+           alt="Skyrim SE" 
+           data-title="The Elder Scrolls V: Skyrim SE" 
+           data-desc="Vencedor de mais de 200 prêmios de Jogo do Ano." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/c7051811e49ab74434a470cf47e1e2ca.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+           <img class="game-card" 
+           src="https://sm.ign.com/ign_pt/gallery/d/dark-souls/dark-souls-remastered-box-art_pr4m.jpg" 
+           alt="DS Remastered" 
+           data-title="Dark Souls Remastered" 
+           data-desc="Revisite o jogo que definiu o gênero com gráficos e desempenho aprimorados." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/7d1cbc0cb9bc3fa1ee6fa52d5e21808c.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+      
+    </div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+
+<div class="row">
+  <h2>Luta</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+      <img class="game-card" 
+           src="https://meups.com.br/wp-content/uploads/2023/09/Israel-Mobolaji-Temitayo-Odunayo-Oluwafemi-Owolabi-Adesanya-UFC.jpeg" 
+           alt="UFC" 
+           data-title="UFC 5" 
+           data-desc="Sinta o impacto de cada golpe com o realismo do Octógono." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5fbef0ad-821e-42ff-bd50-c54a0742abc7/dg8bpww-e5ed7e7f-ef58-4a02-923e-a2dbce86ab7b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi81ZmJlZjBhZC04MjFlLTQyZmYtYmQ1MC1jNTRhMDc0MmFiYzcvZGc4YnB3dy1lNWVkN2U3Zi1lZjU4LTRhMDItOTIzZS1hMmRiY2U4NmFiN2IucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.7V-ryjKMzIRAvtAvb1WUQNKYMXaKK8iUCGwR8lim1dY"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      
+
+      <img class="game-card" 
+           src="https://pixelstore.cl/cdn/shop/files/Disenosintitulo_25.png" 
+           alt="MK 11" 
+           data-title="Mortal Kombat 11" 
+           data-desc="MK está de volta e melhor do que nunca na próxima evolução da franquia icônica." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775693837/KOMBAT_11_dtkmyu.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/6a1249dfc7679f6c64c937d9c8432874.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+           <img class="game-card" 
+           src="https://static.wikia.nocookie.net/dublagempedia/images/8/85/Packshot-4f17aa8af0f3631bd8367b226c0fd263.jpg/revision/latest?cb=20191024001337&path-prefix=pt-br" 
+           alt="Injustice 2" 
+           data-title="Injustice 2" 
+           data-desc="Personalize e evolua os heróis e vilões mais icônicos da DC." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775693057/INJUSTICE_n4tctc.mp4" 
+           data-logo="https://www.pngplay.com/wp-content/uploads/11/Injustice-2-Logo-Transparent-File.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://images.gog.com/3272c0976e5651c0629daf5eab1ac4b2c49d7154b0a316886a1c7fa8b26af702_glx_vertical_cover.webp?namespace=gamesdb" 
+           alt="MK X" 
+           data-title="Mortal Kombat X" 
+           data-desc="Mortal Kombat X combina apresentação cinematográfica com jogabilidade inédita." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775696154/MORTAL_X_weprqf.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/3820fccb250037463096208fe8a48618.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdn.europosters.eu/image/1300/230759.jpg" 
+           alt="Tekken 8" 
+           data-title="Tekken 8" 
+           data-desc="Prepare-se para o próximo capítulo da lendária franquia de jogos de luta." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775696099/TEKEN_8_gsrmeb.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/8278041de9b8124ebdd68726521a689a.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://image.api.playstation.com/cdn/UP0700/CUSA05972_00/4yfeeKKfJdD5WzDQsoiM3xrcqPlpDLm7.png" 
+           alt="Tekken 7" 
+           data-title="Tekken 7" 
+           data-desc="Descubra a conclusão épica da linhagem Mishima e as razões por trás de cada passo da sua luta incessante." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775696138/TEKEN_7_uytick.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/fr/thumb/3/35/Tekken_7_Logo.svg/500px-Tekken_7_Logo.svg.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="11111111111111" 
+           alt="SF V" 
+           data-title="Street Fighter V" 
+           data-desc="O lendário jogo de luta está de volta com visuais incríveis e lutas intensas." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      
+
+      <img class="game-card" 
+           src="http://cdn.awsli.com.br/2500x2500/22/22652/produto/295227042/dragon-ball-z-kakarot-legendary-edition-cover-vxuco0ery4.png" 
+           alt="Dragon Ball Z" 
+           data-title="Dragon Ball Z: Kakarot" 
+           data-desc="Reviva a história de Goku e outros guerreiros Z em DRAGON BALL Z: KAKAROT!" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775690250/DRAGON_BALL_Z_q9ryzj.mp4" 
+           data-logo="https://us-east-1-bandai.graphassets.com/AXzioIclSWilEjFtsMJPwz/ykzF6UdISOaowX5LniPz"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+           <img class="game-card" 
+           src="https://m.media-amazon.com/images/I/71kj4+Y5bHL._AC_UF1000,1000_QL80_.jpg" 
+           alt="MK 1" 
+           data-title="Mortal Kombat 1" 
+           data-desc="Um universo Mortal Kombat renascido criado pelo Deus do Fogo Liu Kang." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494382/mortal_ojdfos.mp4" 
+           data-logo="https://image.api.playstation.com/vulcan/ap/rnd/202305/1515/5672fb236ca3c20e3a4faed4413ee34af042fc4a76ce2c25.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      
+    </div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+<div class="row">
+  <h2>Ação e Aventura (Mundo Aberto)</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/e/e7/Red_Dead_Redemption_2.png" 
+           alt="Red Dead Redemption 2" 
+           data-title="Red Dead Redemption 2" 
+           data-desc="Uma história épica sobre a vida no coração implacável da América no fim da era do faroeste." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1771734264/red_dead_2_hsqfm7.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Red_Dead_Redemption_2_Logo.png/1280px-Red_Dead_Redemption_2_Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/8b2d6cf2b45b41f1abe91bc5b7c1e8f9/EGS_UNCHARTEDLegacyofThievesCollection_NaughtyDogLLC_S2_1200x1600-9deaa177d8716bde5478cdd75d850c9c" 
+           alt="Uncharted 4" 
+           data-title="Uncharted: Coleção Legado dos Ladrões" 
+           data-desc="Busque seu legado e deixe sua marca no mapa em UNCHARTED: Coleção Legado dos Ladrões." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494703/legacy_umnyyk.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/b9763bdff688a0af26e130bab41feb61.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://assets-prd.ignimgs.com/2022/05/27/9781506732022-1653620982308.jpg" 
+           alt="Horizon Forbidden West" 
+           data-title="Horizon Forbidden West" 
+           data-desc="Enfrente máquinas letais e IAs erráticas em uma luta desesperada para restaurar Gaia e salvar a biosfera da Terra da aniquilação total." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494601/west_xoqu1g.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/0a31b8b048c10332ece27bef9670bda8.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/6e6aa039c73347b885803de65ac5d3db/EGS_GhostofTsushima_SuckerPunchProductions_S2_1200x1600-e23e02c1d70be7b528dba50860f87d39" 
+           alt="Ghost of Tsushima" 
+           data-title="Ghost of Tsushima" 
+           data-desc="No Japão feudal, o samurai Jin Sakai precisa decidir entre o código de honra ou métodos não convencionais para salvar sua ilha." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494578/gosth_wnmj25.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/f894cbc7551b7dea91a6aa9fbfc95c21.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-ragnarok-store-art-01-10sep21$ru?$800px--t$" 
+           alt="God of War Ragnarök" 
+           data-title="God of War Ragnarök" 
+           data-desc="Kratos e Atreus devem viajar pelos Nove Reinos em busca de respostas enquanto as forças de Asgard se preparam para o fim do mundo." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775451159/ragnarog_n7g4lc.mp4" 
+           data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/92554480-bde6-4f5c-9861-7022237da1ce/dfk2top-494d7ab4-4d24-4455-bcda-402bf76378d6.png/v1/fill/w_1024,h_277/god_of_war_ragnarok_logo_by_brsbr_dfk2top-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Mjc3IiwicGF0aCI6Ii9mLzkyNTU0NDgwLWJkZTYtNGY1Yy05ODYxLTcwMjIyMzdkYTFjZS9kZmsydG9wLTQ5NGQ3YWI0LTRkMjQtNDQ1NS1iY2RhLTQwMmJmNzYzNzhkNi5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.KNYp9QreC-k_Wmb-HqRtR4VeFLImmeSWYDXwwt4pNMM"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+    
+     <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/d/d0/Horizon_Zero_Dawn_capa.png" 
+           alt="Horizon zero danw" 
+           data-title="Horizon zero danw" 
+           data-desc="Junte-se a Aloy para desbravar o Oeste Proibido, uma fronteira letal que esconde novas ameaças misteriosas." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775698260/FORBI_DANW_al9j03.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4582ef600b4316d72eede3ef78fc77d9.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+           <img class="game-card" 
+           src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1775710602/days-gone-remastered-2025--30418_ubwfjm.jpg" 
+           alt="Days Gone" 
+           data-title="Days Gone" 
+           data-desc="Sobreviva em um mundo devastado por uma pandemia global jogando com o andarilho Deacon St. John." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494762/gone_naoaf3.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/e0e0efac42bf67642b4904c893b46725.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://static.posters.cz/image/750/116582.jpg" 
+           alt="God of War" 
+           data-title="God of War (2018)" 
+           data-desc="Kratos vive agora como um homem no reino dos Deuses e monstros nórdicos." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775698479/GOD_OF_WAR_gtcojf.mp4" 
+           data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a66d9aa2-f0a2-4e8d-9d73-4ba543ea1a50/da6mjxh-2631eb1a-3779-4a52-b63d-82efb14e5c5f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9hNjZkOWFhMi1mMGEyLTRlOGQtOWQ3My00YmE1NDNlYTFhNTAvZGE2bWp4aC0yNjMxZWIxYS0zNzc5LTRhNTItYjYzZC04MmVmYjE0ZTVjNWYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.bNqxyk30X8OWg34d-4lKBGQI9EKHOWtBRdNL2LERGkc"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://image.api.playstation.com/vulcan/ap/rnd/202306/1301/0a5face6e59f61c2ed7f9423c778b10f2e4b8cada54d164f.png" 
+           alt="Spider-Man 2" 
+           data-title="Spider-Man 2" 
+           data-desc="Peter Parker e Miles Morales enfrentam a prova definitiva de força para salvar a cidade de Venom." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775455006/spider_jo0qyh.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/2/25/Marvel%27s_Spider-Man_2_%282025%29_logo_official_%28SGDB_124347%29.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+             <img class="game-card" 
+           src="https://www.europanet.com.br/upload/id_produto/60_____/6000201g.jpg" 
+           alt="Hogwarts Legacy" 
+           data-title="Hogwarts Legacy" 
+           data-desc="Viva o não escrito em Hogwarts no século XIX. O seu personagem guarda a chave de um segredo antigo." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775698517/HOGWORTS_f2newn.mp4" 
+           data-logo="https://cdn-hogwartslegacy.warnerbrosgames.com/home/hero-logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+  
+     
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/7/74/Spider-Man_Miles_Morales_capa.png" 
+           alt="Miles Morales" 
+           data-title="Spider-Man: Miles Morales" 
+           data-desc="O jovem Miles Morales tenta se ajustar à sua nova casa enquanto segue os passos de seu mentor." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775699520/ARANHA_MILES_of32bt.mp4" 
+           data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c56bd0f6-87a9-4798-b74e-c6112f0a7773/de7ncqp-b3935744-2e89-4c22-b981-4ab445e90837.png/v1/fill/w_1280,h_720/spider_man_miles_morales_title_card___png_by_pngsandassets_de7ncqp-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6Ii9mL2M1NmJkMGY2LTg3YTktNDc5OC1iNzRlLWM2MTEyZjBhNzc3My9kZTduY3FwLWIzOTM1NzQ0LTJlODktNGMyMi1iOTgxLTRhYjQ0NWU5MDgzNy5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.hhx6asrSgj8-mo2tCirTJZNMB2LkaGCKQi0JXnsU1n4"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      
+     
+
+      <img class="game-card" 
+           src="https://bdjogos.com.br/capas/5689-mad-max-capa-1.jpg" 
+           alt="Mad Max" 
+           data-title="Mad Max" 
+           data-desc="Torne-se Mad Max, o guerreiro solitário em um mundo pós-apocalíptico onde carros são a chave para a sobrevivência." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775698303/MADMAX_t8hkne.mp4" 
+           data-logo="https://pluspng.com/img-png/mad-max-png-madmax-icon-png-1129.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/angelonia/WDA_StorePortrait_1200x1600_1200x1600-75d21fb44d647ad69967ae1bb0ab0cbc" 
+           alt="Watch Dogs 2" 
+           data-title="Watch Dogs 2" 
+           data-desc="Jogue como Marcus, um jovem hacker brilhante que vive no berço da revolução tecnológica, a área da baía de São Francisco." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775698517/DOGS_2_rdgixq.mp4" 
+           data-logo="https://www.nicepng.com/png/full/813-8135353_watch-dogs-multiple-save-slots-watch-dogs-2.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()"> 
+
+           <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="Vice City" 
+           data-title="Grand Theft Auto Vice City" 
+           data-desc="Traído, caçado e em busca de vingança. Em Vice City, as alianças são frágeis e o poder é tudo. Domine as ruas, os céus e o mar nesta jornada épica de crime e ambição." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Grand_Theft_Auto_Vice_City_logo.svg/1280px-Grand_Theft_Auto_Vice_City_logo.svg.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/d/d3/Grand_Theft_Auto_San_Andreas_capa.png" 
+           alt="GTA San Andreas" 
+           data-title="GTA San Andreas" 
+           data-desc="Carl Johnson precisa salvar sua família e assumir o controle das ruas em um estado inteiro." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775703387/gta_cj_okdlxa.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Grand_Theft_Auto_San_Andreas_logo.svg/500px-Grand_Theft_Auto_San_Andreas_logo.svg.png?_=20161111173935"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     
+
+            <img class="game-card" 
+           src="https://image.api.playstation.com/vulcan/ap/rnd/202009/3021/BtsjAgHT9pqHRXtN9FCk7xc8.png" 
+           alt="Spider-Man Remastered" 
+           data-title="Spider-Man Remastered" 
+           data-desc="Viva a história completa de Peter Parker em uma experiência aprimorada para a nova geração." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775698556/ARANHA_RAMASTERED_jhwowf.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/3fd6083ec914187fb775df5103ffb95d.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+            <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" 
+           alt="GTA V" 
+           data-title="Grand Theft Auto V" 
+           data-desc="Três criminosos muito diferentes conectam suas vidas em uma série de assaltos ousados em Los Santos." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775396024/gta_bffxhd.mp4" 
+           data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/91d52475-1788-4638-a5aa-d1eefcde9419/dgjske6-c13ada3e-9d4a-4270-acac-178864841647.png/v1/fill/w_1010,h_791/gta_iv_logo_by_robertkim092_dgjske6-pre.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+           <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="GTA IV" 
+           data-title="Grand Theft Auto IV" 
+           data-desc="O que o sonho americano significa hoje? Para Niko Bellic, recém-chegado da Europa, é a esperança de fugir de seu passado." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://crystalpng.com/wp-content/uploads/2025/06/GTA-4.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      
+
+    </div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+<div class="row">
+  <h2>Franquia Far Cry</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+     <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/5/59/Far_cry_3_box_art.jpg" 
+           alt="FAR CRY 3" 
+           data-title="FAR CRY 3" 
+           data-desc="Descubra os segredos sombrios de uma ilha tropical onde a sanidade é um luxo e a sobrevivência é a única regra." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772480259/farcry3_wi0ev1.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/e75d4d01cecdda3c64483016bd6af4c1.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/cf87285950ba492bbdc370b9d265ea36/FC4_StorePortrait_1200x1600_1200x1600-7f366d878f5553dae499860243c537ee" 
+           alt="FAR CRY 4" 
+           data-title="FAR CRY 4" 
+           data-desc="Um jovem retorna à sua terra natal para realizar o último desejo de sua mãe e acaba liderando uma rebelião para derrubar um ditador excêntrico no Himalaia." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/f/fc/Far_Cry_4.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/9/94/Far_cry_5_cover.jpg" 
+           alt="farcry5" 
+           data-title="Far Cry 5" 
+           data-desc="Enfrente um culto apocalíptico fanático no interior dos Estados Unidos, liderando a resistência para libertar uma comunidade sitiada por um profeta impiedoso." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/bec73da182e851a5f9e71a3a6e19d3df.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/d/df/Far_Cry_6_capa.jpg" 
+           alt="farcry6" 
+           data-title="Far Cry 6" 
+           data-desc="Lute como um guerrilheiro moderno para derrubar um ditador implacável e libertar uma nação insular tropical parada no tempo." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="http://cdn2.steamgriddb.com/logo_thumb/0b7e83a0c6df5de1ea6f113af3b39319.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1776128239/maxresdefault_2_cqbhp6.jpg" 
+           alt="farcry7" 
+           data-title="Far Cry 7" 
+           data-desc="Embarque em uma corrida contra o tempo para resgatar sua família sequestrada por um grupo conspiratório em uma experiência de sobrevivência não linear." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e542ca9d-2008-4830-9ef1-5fcfa93e376c/dir7vb5-d68aa380-d8fd-4760-aac8-52d70cf48ac0.png/v1/fill/w_1280,h_235/far_cry_7__2025__by_captainclarke19_dir7vb5-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjM1IiwicGF0aCI6Ii9mL2U1NDJjYTlkLTIwMDgtNDgzMC05ZWYxLTVmY2ZhOTNlMzc2Yy9kaXI3dmI1LWQ2OGFhMzgwLWQ4ZmQtNDc2MC1hYWM4LTUyZDcwY2Y0OGFjMC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.aaCQDn52DXlqq-ezoga9ezrTPskd-VWpSvzmlUhLo5s"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/b/be/Farcry_primal_box.jpg" 
+           alt="primal" 
+           data-title="Far Cry Primal" 
+           data-desc="Lute pela sobrevivência na Idade da Pedra como um caçador que deve domar feras selvagens e unir sua tribo contra grupos rivais em um mundo pré-histórico brutal." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/6/6c/Far_Cry_Primal_Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+</div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+
+<div class="row">
+  <h2>Franquia Assassin's Creed</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/e/e9/Assassins_Creed_Valhalla_capa.png" 
+           alt="AC Valhalla" 
+           data-title="Assassin's Creed Valhalla" 
+           data-desc="Escreva sua saga viking em busca de glória e um novo lar na Inglaterra da Idade das Trevas." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494678/vallhala_b0onha.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/7a963088b715398a4438ad53935af1cb.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+<img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/camellia/ACOrigins_STD_Store_Portrait_1200x1600_1200x1600-4a79f9f393f7a3a9e5be3a0ae581f3d5" 
+           alt="AC Origins" 
+           data-title="Assassin's Creed Origins" 
+           data-desc="Explore o Egito Antigo e descubra a origem da Irmandade dos Assassinos." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775700165/ORIGENS_i5ua1z.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/20d71db174155578799901e0af9b24c7.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+      <img class="game-card" 
+           src="https://store-images.s-microsoft.com/image/apps.62015.13663198691635509.d632fab1-4bb2-4655-a619-75bb8f17a360.e00e5e77-8e14-490f-a51b-a024d0fe6e11" 
+           alt="AC III" 
+           data-title="Assassin's Creed III" 
+           data-desc="Lute pela liberdade nas colônias americanas durante a Revolução Americana." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775699963/ASSASINE_3_mv64wv.mp4" 
+           data-logo="https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fanise%2Fhome%2FHelix_AC3r_Logo_Vertical_White_NoCrest-2561x800-c8a0249a8e0e15aa11d53e4d9052971945b9ab6e.png?resize=1&w=480&h=270&quality=medium"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/8/84/Assassins_Creed_Odyssey_capa.png" 
+           alt="AC Odyssey" 
+           data-title="Assassin's Creed Odyssey" 
+           data-desc="Escreva sua própria odisseia épica e torne-se um herói lendário da Grécia Antiga." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775700039/ADDISEY_o4oyd3.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/f4693942620b18fb077b314ab3b8f369.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/9/9a/Assassins_Creed_Unity_capa.png" 
+           alt="AC Unity" 
+           data-title="Assassin's Creed Unity" 
+           data-desc="A história de Arno na Paris da Revolução Francesa." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775700163/UNITY_egyuwk.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/7289106c3ebccb21877f9a50b697e761.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/c/ca/Assassins_Creed_4_Black_Flag_capa.png" 
+           alt="AC Black Flag" 
+           data-title="Assassin's Creed IV: Black Flag" 
+           data-desc="Torne-se Edward Kenway, um pirata treinado por assassinos no Caribe." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775700134/FLAG_pfq64z.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/3e3c7e0018567873b322c3c00e51deda.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/a/ac/Assassins_Creed_2_capa.png" 
+           alt="AC II" 
+           data-title="Assassin's Creed II" 
+           data-desc="A jornada épica de Ezio Auditore na Itália Renascentista." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775699994/ASSASINA_1_REMAKE_jcunvv.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/17cefda3639b47a724f51016319b911d.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+    </div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <h2>Outros Títulos (FPS, LEGO, Stealth, etc.)</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+      <img class="game-card" 
+           src="https://universocroft.com.br/wp-content/uploads/2023/06/tr_2013_packshot-725x1024-1.jpg" 
+           alt="Tomb Raider" 
+           data-title="Tomb Raider (2013)" 
+           data-desc="Explore a história de origem de Lara Croft e sua ascensão de uma jovem sobrevivente a uma aventureira endurecida." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704707/TOMBI_hlydy8.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/9/9f/Tomb_Raider_%282013_video_game%29_%E2%80%93_Game%E2%80%99s_logo.svg"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+           
+      <img class="game-card" 
+           src="https://cdn1.epicgames.com/offer/hyacinth/GRW_StorePortrait_1200x1600_1200x1600-78b13dd96e208170ca3ed32b3034fcc2" 
+           alt="Ghost Recon" 
+           data-title="Tom Clancy's Ghost Recon Wildlands" 
+           data-desc="Crie uma equipe com até 3 amigos e aproveite a experiência definitiva de tiro militar." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704718/GOST_RECON_fx55j0.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/a3a8381281635a1926bd3ea09f29f4d9.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+            <img class="game-card" 
+           src="https://cdn.europosters.eu/image/750/26603.jpg" 
+           alt="MGS V" 
+           data-title="Metal Gear Solid V: The Phantom Pain" 
+           data-desc="Uma nova era para a franquia com tecnologia de ponta e mundo aberto." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704692/MGS_TPP_jxyjsx.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/0e189c35adab992d274c294586143ec9.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+      <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="BF V" 
+           data-title="Battlefield 6" 
+           data-desc="Prepare-se para a guerra total. Gráficos fotorrealistas em 4K e a física de destruição mais avançados da história da franquia Battlefield" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="BF 4" 
+           data-title="Battlefield 4" 
+           data-desc="O clássico de tiro em primeira pessoa que define o gênero de guerra moderna." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/8/87/Battlefield_4_logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://upload.wikimedia.org/wikipedia/pt/1/1e/Hitman_2016_capa.png" 
+           alt="Hitman" 
+           data-title="Hitman" 
+           data-desc="Elimine alvos poderosos em locais exóticos ao redor do mundo." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704568/HITMAM_pfdyby.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/53092cbc9ebb151dc54c48c07788e0de.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     
+      <img class="game-card" 
+           src="https://img.elo7.com.br/product/685x685/3A5833F/poster-adesivo-decorativo-batman-arkham-knight-a-42-5x60cm-enfeite.jpg" 
+           alt="Batman Knight" 
+           data-title="Batman: Arkham Knight" 
+           data-desc="Seja o Batman e enfrente a ameaça final contra a cidade que você jurou proteger." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704602/ARKHAN_BATMAN_ircd5d.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/6f6e0538ead46a68ea016263b2398ccd.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://img.elo7.com.br/product/zoom/3A58354/poster-adesivo-decorativo-batman-arkham-origins-b-42-5x60cm-adesivo.jpg" 
+           alt="Batman Origins" 
+           data-title="Batman: Arkham Origins" 
+           data-desc="Explore uma Gotham City expandida e vivencie a história de origem do Cavaleiro das Trevas." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704602/ARKHAN_BATMAN_ircd5d.mp4" 
+           data-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f9fd1ce8-6cd6-446b-a8b5-fc5cea739a59/d616u44-6cebd38e-67f1-40b4-8c29-be7d2cb135fc.png/v1/fill/w_1024,h_564/batman__arkham_origins___logo__render__by_gbmpersonal_d616u44-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTY0IiwicGF0aCI6Ii9mL2Y5ZmQxY2U4LTZjZDYtNDQ2Yi1hOGI1LWZjNWNlYTczOWE1OS9kNjE2dTQ0LTZjZWJkMzhlLTY3ZjEtNDBiNC04YzI5LWJlN2QyY2IxMzVmYy5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.FpeYOJqorcY7D-7ismNPSk-yUAa-j6X1zaaInXP9I1w"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://image.api.playstation.com/cdn/UP4363/CUSA04220_00/enPJKepv77SjDxBYHsetY8XwebH26W1Z.png" 
+           alt="Sniper Elite 4" 
+           data-title="Sniper Elite 4" 
+           data-desc="Descubra a liberdade incomparável de tiro de elite no maior e mais avançado jogo da Segunda Guerra Mundial." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704726/SNIPER_pn27wx.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/9b4fab8ff395087fe3e4862dc62369ac.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://wallpapers.com/images/hd/left-4-dead-2-zombie-hand-t5rhv5o4w42ii7pg.jpg" 
+           alt="L4D2" 
+           data-title="Left 4 Dead 2" 
+           data-desc="O apocalipse zumbi cooperativo definitivo." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704673/LEFT_4_dvv4pb.mp4" 
+           data-logo="https://developer.valvesoftware.com/w/images/thumb/9/95/Logo-Left_4_Dead_2.png/420px-Logo-Left_4_Dead_2.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="Bodycam" 
+           data-title="Bodycam" 
+           data-desc="Um jogo de tiro em primeira pessoa ultra-realista focado no uso de câmeras corporais." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775494629/cam_h7g6rs.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/8af8c10744c0f53f01d474777721cd65.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="Bully" 
+           data-title="Bully: Scholarship Edition" 
+           data-desc="Navegue pela hierarquia social da Bullworth Academy como o adolescente travesso Jimmy Hopkins." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/ea517968df45ef4db6d4be40cbf898f4.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     
+
+      <img class="game-card" 
+           src="https://image.api.playstation.com/cdn/UP1018/CUSA00251_00/7YrRqN2wgRzpzX4K5RLUEecDyu53mz8U.png" 
+           alt="LEGO Marvel" 
+           data-title="LEGO Marvel Super Heroes" 
+           data-desc="Controle uma enorme lista de personagens da Marvel para deter Loki e outros vilões." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/fr/7/7d/Lego_Marvel_Super_Heroes_Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="Sonic Mania" 
+           data-title="Sonic Mania" 
+           data-desc="Uma celebração do passado e futuro, Sonic Mania traz a nostalgia 2D de volta." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo_thumb/810462d01f318bd13e628a77fc3f92c0.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000002090/ecfc64f339579b17ed8d12d5bdb4acd0cad2811cb2ff7dd0a02ce7e512c2d26a" 
+           alt="Crash Trilogy" 
+           data-title="Crash Bandicoot N. Sane Trilogy" 
+           data-desc="Seu marsupial favorito está de volta melhorado e pronto para dançar!" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772480502/crash_srwj1b.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/fr/7/75/Crash_Bandicoot_N_Sane_Trilogy_Logo.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://img.elo7.com.br/product/685x685/2797F06/capa-pirulito-plants-vs-zombies-capa-para-pirulito.jpg" 
+           alt="PvZ" 
+           data-title="Plants vs. Zombies" 
+           data-desc="Prepare-se para sujar suas plantas enquanto uma horda de zumbis divertidos invade sua casa." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704699/PLANTAS_dweyef.mp4" 
+           data-logo="https://static.wikia.nocookie.net/logopedia/images/0/01/Pvz_logo_stacked_rgb.png/revision/latest?cb=20120408101754"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+      <img class="game-card" 
+           src="https://images.g2a.com/360x600/1x1x1/the-sims-2-legacy-collection-p10000509694/f0cedf020a3f4f29af84c3cb" 
+           alt="The Sims 2" 
+           data-title="The Sims 2" 
+           data-desc="Controle a vida de seus Sims desde o berço até o túmulo no simulador de vida clássico." 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1775704707/SIMS_4_vryizu.mp4" 
+           data-logo="https://upload.wikimedia.org/wikipedia/commons/c/c2/The_Sims_2_logo_%282024%29.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+    </div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+
+<div class="row">
+  <h2>CONFIGURE UMA NOVA CATEGORIA AQUI</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+</div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+  <h2>CONFIGURE UMA NOVA CATEGORIA AQUI</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+</div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+  <h2>CONFIGURE UMA NOVA CATEGORIA AQUI</h2>
+  <div class="category-wrapper">
+    <button class="scroll-btn left" onclick="scrollCategory(this, -1)">❮</button>
+    <div class="games-scroll">
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+     <img class="game-card" 
+           src="https://img.freepik.com/vetores-premium/cuidado-perigo-aviso-atencao-fitas-da-policia-sinal-linha-linha-preta-e-amarela-listrada_126895-515.jpg" 
+           alt="NOME DO JOGO" 
+           data-title="NOME DO JOGO" 
+           data-desc="DESCRICAO" 
+           data-video="https://res.cloudinary.com/dlt1gqwnc/video/upload/v1772215223/bf6-GAMEFLIX_o1ttw7.mp4" 
+           data-logo="https://cdn2.steamgriddb.com/logo/4c25257cc0a490730dee6fe6a528accc.png"
+         data-link="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" 
+           onclick="openWppModal()">
+
+
+</div>
+    <button class="scroll-btn right" onclick="scrollCategory(this, 1)">❯</button>
+  </div>
+</div>
+
+
+
+
+<div class="faixa-destaque" style="width: 100%; margin-top: 20px;">
+TODO SITE COM 70% DE DESCONTO - OFERTA DE LANÇAMENTO!</div>
+
+<div class="floating-btn-container">
+  <a href="https://gameflix2.github.io/ESCOLHA-SEU-PACK/" target="_blank" style="text-decoration: none;">
+    <button class="netflix-btn">VEJA NOSSOS PLANOS AQUI</button>
+  </a>
+</div>
+    </div>
+
+
+<!-- ====== MODAL WHATSAPP ====== -->
+<div id="wppModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; flex-direction:column;">
+  <div style="background:#141414; border:1px solid #e50914; border-radius:12px; padding:40px 32px; max-width:420px; width:90%; text-align:center; position:relative; box-shadow:0 0 60px rgba(229,9,20,0.5);">
+    <button onclick="closeWppModal()" style="position:absolute; top:12px; right:16px; background:none; border:none; color:#fff; font-size:22px; cursor:pointer;">✕</button>
+    <div style="font-size:48px; margin-bottom:12px;">🎮</div>
+    <h2 style="color:#e50914; font-family:'Bebas Neue',sans-serif; font-size:28px; margin-bottom:8px; letter-spacing:2px;">ACESSE A GAMEFLIX</h2>
+    <p style="color:#ccc; font-size:14px; margin-bottom:24px; line-height:1.6;">Clique no botão abaixo para falar com nossa equipe no WhatsApp e garantir seu acesso com condição exclusiva!</p>
+    <a href="https://wa.me/5553981045078?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Gameflix!" target="_blank" style="display:inline-block; background:#25D366; color:#fff; padding:14px 32px; border-radius:8px; font-weight:bold; font-size:16px; text-decoration:none; letter-spacing:1px; transition:opacity 0.2s;">💬 FALAR NO WHATSAPP</a>
+    <p style="color:#666; font-size:11px; margin-top:20px;">Resposta em até 5 minutos • Suporte 24h</p>
+  </div>
+</div>
+
+  <div class="netflix-modal" id="netflixModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">×</span>
+      <iframe id="modalVideo" class="modal-video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+<!-- ====== MODAIS DE CATEGORIA ESTILO NETFLIX ====== -->
+
+<!-- MODAL: OFERTAS EXCLUSIVAS -->
+<div class="cat-modal-overlay" id="modal-ofertas">
+  <div class="cat-modal-box cat-ofertas">
+    <button class="cat-modal-close" onclick="closeCategoryModal('ofertas')">✕</button>
+    <div class="cat-modal-header">
+      <span class="cat-modal-icon">⚡</span>
+      <div>
+        <h2 class="cat-modal-title">OFERTAS EXCLUSIVAS</h2>
+        <p class="cat-modal-subtitle">"Condição exclusiva para testar a plataforma. Aproveite!" • Tempo limitado</p>
+      </div>
+    </div>
+    <div class="cat-modal-body">
+      <div class="cat-launch-grid">
+
+         <div class="cat-launch-item" onclick="openWppModal(); closeCategoryModal('ofertas')" style="cursor: pointer;">
+          <img src="https://www.europanet.com.br/upload/id_produto/100___/100960g.jpg" alt="ELDEN RING">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag" style="background: #ffd700; color: #000;">OFERTA TOP 1 DA SEMANA</span>
+            <h4>ELDEN RING DELUXE EDITION</h4>
+            <p>R$ 24,90 oferta imperdivel - Domine combates intensos e conquiste o Anel Prata</p>
+          </div>
+        </div>
+
+        
+        <div class="cat-launch-item" onclick="openWppModal(); closeCategoryModal('ofertas')" style="cursor: pointer;">
+          <img src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Ffar-cry-3%2Fdeluxe-edition%2FFC3-dlx-2560x1440-4fa7f35072ee54993b47cf163c2f4f0fd7b1759a.jpg" alt="FAR CRY 3">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">Progressão e Sobrevivência</span>
+            <h4>FAR CRY 3</h4>
+            <p>R$ 14,90 - Descubra os segredos sombrios de uma ilha tropical onde a sanidade é um luxo e a sobrevivência é a única regra</p>
+          </div>
+        </div>
+
+        <div class="cat-launch-item" onclick="openWppModal(); closeCategoryModal('ofertas')" style="cursor: pointer;">
+          <img src="https://howlongtobeat.com/games/72822_Resident_Evil_3_(2020).jpg" alt="RESIDENT EVIL 3 REMAKE">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">Survival Horror de Ação</span>
+            <h4>RESIDENT EVIL 3 REMAKE</h4>
+            <p>R$ 17,90/ Encarne Jill Valentine e lute para escapar de Raccoon City e do implacável Nemesis.</p>
+          </div>
+        </div>
+
+       
+        <div class="cat-launch-item" onclick="openWppModal(); closeCategoryModal('ofertas')" style="cursor: pointer;">
+          <img src="https://t2.tudocdn.net/671739?w=824&h=494" alt="FORZA MOTORSPORT">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">velocidade</span>
+            <h4>FORZA MOTORSPORT</h4>
+            <p>R$ 24,90 - Não é apenas dirigir. É sobre a conexão entre homem, máquina e asfalto. A vitória começa na garagem.</p>
+          </div>
+        </div>
+
+        <div class="cat-launch-item" onclick="openWppModal(); closeCategoryModal('ofertas')" style="cursor: pointer;">
+          <img src="https://gaming-cdn.com/images/products/184/orig/batman-arkham-origins-pc-game-steam-cover.jpg?v=1683619090" alt="BATMAM">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">Combate FreeFlow</span>
+            <h4>BATMAM ARKHAM</h4>
+            <p>R$ 14,90 - Torne-se o Cavaleiro das Trevas. Mergulhe nas sombras de Gotham e enfrente o caos em uma noite onde os piores vilões assumem o controle</p>
+          </div>
+        </div>
+
+        <div class="cat-launch-item" onclick="openWppModal(); closeCategoryModal('ofertas')" style="cursor: pointer;">
+          <img src="https://assetsio.gnwcdn.com/eurogamer-zjp1vx.jpg?width=1200&height=600&fit=crop&enable=upscale&auto=webp" alt="GTA V">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">MUNDO ABERTO</span>
+            <h4>GTA V</h4>
+            <p>R$ 34,90 - O mundo de Los Santos te espera, Mundo aberto massivo com três protagonistas, focado em crimes, liberdade total e caos urbano.</p>
+          </div>
+        </div>
+
+        <div class="cat-launch-item" onclick="openWppModal(); closeCategoryModal('ofertas')" style="cursor: pointer;">
+          <img src="https://hype.games/_next/image?url=https%3A%2F%2Fimg.hype.games%2Fcdn%2Fdec0c5df-2124-49c5-b415-87de75710655COVER---%5BUbisoft%5D-FAR-CRY-PRIMAL.jpg&w=3840&q=75" alt="FAR CRY PRIMAL">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">SOBREVIVENCIA</span>
+            <h4>FAR CRY PRIMAL</h4>
+            <p>R$ 14,90 - Sobreviva à Idade da Pedra e domine feras selvagens</p>
+          </div>
+        </div>
+
+        <div class="cat-launch-item" onclick="openWppModal(); closeCategoryModal('ofertas')" style="cursor: pointer;">
+          <img src="https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000002090/ecfc64f339579b17ed8d12d5bdb4acd0cad2811cb2ff7dd0a02ce7e512c2d26a" alt="CRASH BANDICOOT TRILOGY">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">Aventura</span>
+            <h4>CRASH BANDICOOT TRILOGY</h4>
+            <p>R$ 14,90 - A trilogia original que marcou época, agora em alta definição</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <p class="cat-modal-note">⚡ Oferta de exclusiva — válida por tempo limitado.</p>
+  </div>
+</div>
+<!-- MODAL: LANÇAMENTOS -->
+<div class="cat-modal-overlay" id="modal-lancamentos">
+  <div class="cat-modal-box cat-lancamentos">
+    <button class="cat-modal-close" onclick="closeCategoryModal('lancamentos')">✕</button>
+    <div class="cat-modal-header">
+      <span class="cat-modal-icon">💎</span>
+      <div>
+        <h2 class="cat-modal-title">LANÇAMENTOS</h2>
+        <p class="cat-modal-subtitle">Os títulos mais quentes chegando na GAMEFLIX</p>
+      </div>
+    </div>
+    <div class="cat-modal-body">
+      <div class="cat-launch-grid">
+        <div class="cat-launch-item">
+          <img src="https://cdn1.epicgames.com/offer/a14a02aa3c8143729605eaf7c93d7501/EGS_Battlefield6_BattlefieldStudios_S2_1200x1600-a88625a836120c55650c83d17a010c25" alt="BF6">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">DISPONÍVEL</span>
+            <h4>Battlefield 6</h4>
+            <p>O FPS mais esperado do ano chegou!</p>
+          </div>
+        </div>
+        <div class="cat-launch-item">
+          <img src="https://cdn.loaded.com/496x700/media/catalog/product/r/e/resident_evil_requiem_cdkeys_1.png" alt="RE Requiem">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">DISPONÍVEL</span>
+            <h4>Resident Evil Requiem</h4>
+            <p>O terror voltou mais assustador que nunca.</p>
+          </div>
+        </div>
+        <div class="cat-launch-item">
+          <img src="https://res.cloudinary.com/dlt1gqwnc/image/upload/v1771886278/Captura_de_tela_2026-02-23_185713_cljm2d.png" alt="FIFA 26">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag cat-tag-soon">EM BREVE</span>
+            <h4>FIFA 26</h4>
+            <p>Nova geração do futebol chegando em breve.</p>
+          </div>
+        </div>
+        <div class="cat-launch-item">
+          <img src="https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-ragnarok-store-art-01-10sep21$ru?$800px--t$" alt="GoW Ragnarok">
+          <div class="cat-launch-info">
+            <span class="cat-launch-tag">DISPONÍVEL</span>
+            <h4>God of War Ragnarök</h4>
+            <p>Pai e filho contra o impossível.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="cat-modal-note">🎮 Novos títulos adicionados toda semana. Seja membro e não perca nenhum lançamento!</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     GAMEFLIX — MODAL: COMO INSTALAR (UPGRADE)
+     Substitua todo o bloco <div class="cat-modal-overlay" id="modal-instalar">
+     pelo código abaixo.
+     ============================================================ -->
+
+<div class="cat-modal-overlay" id="modal-instalar">
+  <div class="cat-modal-box cat-instalar">
+    <button class="cat-modal-close" onclick="closeCategoryModal('instalar')">✕</button>
+
+    <div class="cat-modal-header">
+      <span class="cat-modal-icon">⚙️</span>
+      <div>
+        <h2 class="cat-modal-title">COMO INSTALAR</h2>
+        <p class="cat-modal-subtitle">Passo a passo simples para jogar em minutos</p>
+      </div>
+    </div>
+
+    <div class="cat-modal-body">
+      <!-- GRID DE CARDS DE INSTALAÇÃO -->
+      <div class="gf-install-grid">
+
+        <div class="gf-install-card">
+          <span class="gf-install-step-bg">01</span>
+          <i class="gf-install-icon">🎯</i>
+          <h3 class="gf-install-card-title">ESCOLHA SEU PLANO</h3>
+          <p class="gf-install-card-desc">Acesse nossos planos e escolha o ideal para você. Opções a partir de R$&nbsp;14,90/mês.</p>
+        </div>
+
+        <div class="gf-install-card">
+          <span class="gf-install-step-bg">02</span>
+          <i class="gf-install-icon">💳</i>
+          <h3 class="gf-install-card-title">FAÇA O PAGAMENTO</h3>
+          <p class="gf-install-card-desc">PIX, cartão ou boleto. Acesso liberado em até 5 minutos após confirmação.</p>
+        </div>
+
+        <div class="gf-install-card">
+          <span class="gf-install-step-bg">03</span>
+          <i class="gf-install-icon">🔑</i>
+          <h3 class="gf-install-card-title">RECEBA O ACESSO</h3>
+          <p class="gf-install-card-desc">Email e senha enviados direto no WhatsApp ou e-mail cadastrado.</p>
+        </div>
+
+        <div class="gf-install-card">
+          <span class="gf-install-step-bg">04</span>
+          <i class="gf-install-icon">🎮</i>
+          <h3 class="gf-install-card-title">BAIXE E JOGUE</h3>
+          <p class="gf-install-card-desc">Login no site, escolha o jogo, clique em Download. Descompacte e jogue. Simples assim!</p>
+        </div>
+
+        <div class="gf-install-card gf-install-card--full">
+          <span class="gf-install-step-bg">05</span>
+          <i class="gf-install-icon">🛟</i>
+          <h3 class="gf-install-card-title">PRECISA DE AJUDA?</h3>
+          <p class="gf-install-card-desc">Nossa equipe está disponível 24h no WhatsApp para te ajudar com qualquer dúvida na instalação.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="cat-cta-btn" onclick="openWppModal(); closeCategoryModal('instalar')">💬 FALAR COM SUPORTE</button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     GAMEFLIX — MODAL: SORTEIOS (UPGRADE)
+     Substitua todo o bloco <div class="cat-modal-overlay" id="modal-sorteios">
+     pelo código abaixo.
+     ============================================================ -->
+
+<div class="cat-modal-overlay" id="modal-sorteios">
+  <div class="cat-modal-box cat-sorteios">
+    <button class="cat-modal-close" onclick="closeCategoryModal('sorteios')">✕</button>
+
+    <div class="cat-modal-header">
+      <span class="cat-modal-icon">🎁</span>
+      <div>
+        <h2 class="cat-modal-title">SORTEIOS</h2>
+        <p class="cat-modal-subtitle">Todo mês novos prêmios para membros GAMEFLIX</p>
+      </div>
+    </div>
+
+    <div class="cat-modal-body">
+
+      <!-- HERO CARD DO SORTEIO -->
+      <div class="gf-draw-container">
+        <div class="gf-draw-hero">
+
+          <!-- Faixa de status ATIVO -->
+          <div class="gf-draw-badge-row">
+            <span class="gf-draw-badge">
+              <span class="gf-draw-badge-dot"></span>
+              ATIVO
+            </span>
+            <span class="gf-draw-badge-label">SORTEIO DO MÊS</span>
+          </div>
+
+          <!-- Prêmio principal -->
+          <div class="gf-draw-prize-icon">🏆</div>
+          <h2 class="gf-draw-prize-title">💠 R$ 1.000 NO PIX 💠</h2>
+          <p class="gf-draw-prize-sub">corre e participe você também‼</p>
+
+          <!-- Countdown -->
+          <div class="gf-draw-countdown">
+            <div class="gf-draw-countdown-item">
+              <span id="raffle-days">--</span>
+              <small>DIAS</small>
+            </div>
+            <div class="gf-draw-countdown-sep">:</div>
+            <div class="gf-draw-countdown-item">
+              <span id="raffle-hours">--</span>
+              <small>HORAS</small>
+            </div>
+            <div class="gf-draw-countdown-sep">:</div>
+            <div class="gf-draw-countdown-item">
+              <span id="raffle-mins">--</span>
+              <small>MIN</small>
+            </div>
+          </div>
+
+        </div><!-- /gf-draw-hero -->
+
+        <!-- Regras de participação -->
+        <div class="gf-draw-rules">
+          <h4 class="gf-draw-rules-title">📋 COMO PARTICIPAR:</h4>
+          <ul class="gf-draw-rules-list">
+            <li><strong>PARA PARTICIPAR É MUITO SIMPLES!!</strong></li>
+            <li>✅ Clique no botão abaixo e chame no WhatsApp dizendo <em>"quero participar do sorteio de R$&nbsp;1.000"</em>.</li>
+            <li>✅ O sorteio acontece todo dia 30 de cada mês, ao vivo.</li>
+            <li>⬇️ <strong>CLICA NO BOTÃO ABAIXO E VEM PARA GAMEFLIX</strong></li>
+          </ul>
+        </div>
+
+      </div><!-- /gf-draw-container -->
+
+    </div><!-- /cat-modal-body -->
+
+    <button class="cat-cta-btn gf-draw-cta" onclick="openWppModal(); closeCategoryModal('sorteios')">🎯 QUERO PARTICIPAR</button>
+
+  </div>
+</div>
+
+
+<!-- MODAL: DÚVIDAS -->
+<div class="cat-modal-overlay" id="modal-duvidas">
+  <div class="cat-modal-box cat-duvidas">
+    <button class="cat-modal-close" onclick="closeCategoryModal('duvidas')">✕</button>
+    <div class="cat-modal-header">
+      <span class="cat-modal-icon">❓</span>
+      <div>
+        <h2 class="cat-modal-title">DÚVIDAS FREQUENTES</h2>
+        <p class="cat-modal-subtitle">Respostas rápidas para o que você precisa saber</p>
+      </div>
+    </div>
+    <div class="cat-modal-body">
+      <div class="cat-faq">
+        <div class="cat-faq-item" onclick="toggleFaq(this)">
+          <div class="cat-faq-q">Os jogos são originais? <span class="faq-arrow">▼</span></div>
+          <div class="cat-faq-a">A GAMEFLIX oferece acesso a jogos via plataforma própria. Todos os títulos são testados e funcionam 100% no PC.</div>
+        </div>
+        <div class="cat-faq-item" onclick="toggleFaq(this)">
+          <div class="cat-faq-q">Precisa de internet para jogar? <span class="faq-arrow">▼</span></div>
+          <div class="cat-faq-a">Não! Após o download, a maioria dos jogos funciona 100% offline. Alguns títulos online requerem conexão.</div>
+        </div>
+        <div class="cat-faq-item" onclick="toggleFaq(this)">
+          <div class="cat-faq-q">Funciona em qualquer PC? <span class="faq-arrow">▼</span></div>
+          <div class="cat-faq-a">Funciona em PCs com Windows 10/11, 8GB RAM e processador i5 ou equivalente. Nosso suporte auxilia na instalação.</div>
+        </div>
+        <div class="cat-faq-item" onclick="toggleFaq(this)">
+          <div class="cat-faq-q">Posso cancelar quando quiser? <span class="faq-arrow">▼</span></div>
+          <div class="cat-faq-a">Sim! Não há fidelidade. Cancele quando quiser via WhatsApp sem nenhuma burocracia.</div>
+        </div>
+        <div class="cat-faq-item" onclick="toggleFaq(this)">
+          <div class="cat-faq-q">Como faço para baixar os jogos? <span class="faq-arrow">▼</span></div>
+          <div class="cat-faq-a">Após o login, clique no jogo desejado, selecione "Download", descompacte o arquivo e execute. Nosso suporte te guia no processo!</div>
+        </div>
+        <div class="cat-faq-item" onclick="toggleFaq(this)">
+          <div class="cat-faq-q">Tem suporte técnico? <span class="faq-arrow">▼</span></div>
+          <div class="cat-faq-a">Sim! Suporte 24h via WhatsApp para instalação, dúvidas e qualquer problema técnico.</div>
+        </div>
+      </div>
+    </div>
+    <button class="cat-cta-btn" onclick="openWppModal(); closeCategoryModal('duvidas')">💬 AINDA TEM DÚVIDAS? FALE CONOSCO</button>
+  </div>
+</div>
+
+  <footer class="footer">
+  <div class="footer-container">
+    <p class="footer-contact">Dúvidas? Ligue <a href="https://wa.me/5553981045078">0800-GAMEFLIX</a></p>
+    
+    <div class="footer-links">
+      <ul class="footer-column">
+        <li><a href="#">Perguntas frequentes</a></li>
+        <li><a href="#">Relações com investidores</a></li>
+        <li><a href="#">Formas de assistir</a></li>
+        <li><a href="#">Informações corporativas</a></li>
+      </ul>
+
+      <ul class="footer-column">
+        <li><a href="#">Central de ajuda</a></li>
+        <li><a href="#">Carreiras</a></li>
+        <li><a href="#">Termos de uso</a></li>
+        <li><a href="https://instagram.com/Ian_Ferreira_MKT">Entre em contato</a></li>
+      </ul>
+
+      <ul class="footer-column">
+        <li><a href="#">Conta</a></li>
+        <li><a href="#">Resgatar cartões pré-pagos</a></li>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Teste de velocidade</a></li>
+      </ul>
+
+      <ul class="footer-column">
+        <li><a href="#">Media Center</a></li>
+        <li><a href="#">Comprar cartões pré-pagos</a></li>
+        <li><a href="#">Preferências de cookies</a></li>
+        <li><a href="#">Avisos legais</a></li>
+      </ul>
+    </div>
+
+    <p class="footer-country">GAMEFLIX Brasil</p>
+  </div>
+</footer>
+  <script src="script.js"></script>
+  <script>
+    const searchInput = document.getElementById('game-search');
+    searchInput.addEventListener('input', function() {
+      const termoBusca = this.value.toLowerCase().trim();
+      const cardsPremium = document.querySelectorAll('.row-premium .game-card');
+      cardsPremium.forEach(card => {
+        const nomeJogo = card.getAttribute('alt') ? card.getAttribute('alt').toLowerCase() : "";
+        if (nomeJogo.includes(termoBusca)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+
+</div>
+</body>
+</html>

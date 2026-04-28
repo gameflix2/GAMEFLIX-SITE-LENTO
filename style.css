@@ -1,0 +1,2347 @@
+:root {
+  --netflix-red: #e50914;
+  --bg-dark: #000000; /* Antes era #141414 (cinza escuro) */
+  --text-gray: #a3a3a3;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #000000;
+  color: #fff;
+  
+  overflow-x: hidden;
+}
+
+/* 1. Ajuste a sombra para ela ser curta e não descer na tela */
+.pinning-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  /* O gradiente agora termina totalmente aos 70px, ficando uma faixa estreita */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.969) 0%, rgba(0, 0, 0, 0.794) 70px);
+  transition: background 0.3s;
+}
+
+/* 2. O ajuste que você enviou para alinhar os itens */
+.main-header {
+  display: flex;
+  align-items: center;
+  padding: 5px 2%; 
+  gap: 4px;
+  height: 60px; /* Defina uma altura fixa pequena para garantir o tamanho do quadro */
+}
+
+/* 3. Garante que a logo (imagem ou texto) não force a altura para cima */
+.logo img {
+  height: 90px; /* Ajuste o tamanho da logo para caber na faixa estreita */
+  width: auto;
+}
+
+/* Ajuste para dispositivos móveis se necessário */
+@media (max-width: 768px) {
+  .logo img {
+    width: 90px;
+  }
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 18px;
+  padding: 0;
+  font-size: 14px;
+}
+
+.nav-links a {
+  color: #e5e5e5;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--text-gray); }
+
+.header-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-actions button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.header-actions img.profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.banner {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end; /* Alinha o conteúdo no fundo */
+  padding: 0 4% 120px 4%; /* O 120px garante que o texto não fique 'colado' no chão */
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0px !important;
+}
+.banner-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 60px; /* Diminuído para apenas 60px para ser um corte seco e elegante */
+  background: linear-gradient(to top, #000000, transparent);
+  z-index: 1;
+}
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+  z-index: 1;
+}
+
+.banner-content {
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px; /* Ajuste fino para a altura dos botões */
+}
+
+.banner-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+.banner-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.btn-play {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 10px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0px;
+}
+
+.btn-info {
+  background: rgba(109, 109, 110, 0.7);
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.row h2 {
+  font-size: 1.4vw;
+  color: #e5e5e5;
+  margin-bottom: 2px;
+}
+
+.top-10-container {
+  position: relative;
+}
+
+/* Procure por .top-10-scroll e mude para .top-10-row */
+.top-10-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+  align-items: flex-end;
+  scrollbar-width: none;
+}
+
+.top-10-row::-webkit-scrollbar {
+  display: none;
+}
+
+.top-10-row::-webkit-scrollbar {
+  display: none; /* Esconde barra no Chrome/Edge */
+}
+.card-container {
+  position: relative;
+  min-width: 300px;
+  height: 260px;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.card-container:hover {
+  transform: scale(1.05);
+}
+
+.rank-number {
+  position: absolute;
+  left: -10px;
+  bottom: -25px;
+  font-size: 260px;
+  font-weight: 900;
+  line-height: 1;
+  color: #000;
+  -webkit-text-stroke: 6px #6a6a6a;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.poster-img {
+  width: 180px;
+  height: 260px;
+  object-fit: cover;
+  z-index: 2;
+  margin-left: 110px;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.badge-new {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  background-color: var(--netflix-red);
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 2px;
+  z-index: 3;
+  text-transform: uppercase;
+}
+
+.top-10-container {
+    position: relative; /* Isso prende as setas dentro da secção do Top 10 */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 40px 0;
+}
+
+
+
+
+
+.top-10-row::-webkit-scrollbar {
+    display: none;                 /* Esconde a barra no Chrome/Edge */
+}
+
+.top-10-row::-webkit-scrollbar {
+  display: none; /* Chrome/Edge */
+}
+
+/* --- SETAS NO CENTRO E FUNCIONANDO --- */
+.arrow-left, .arrow-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #e50914; /* Vermelho Gameflix */
+  border: none;
+  font-size: 3rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 100;
+  transition: 0.3s;
+  height: 80px; /* Altura da seta */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-left { left: 0; border-radius: 0 5px 5px 0; }
+.arrow-right { right: 0; border-radius: 5px 0 0 5px; }
+
+.arrow-left:hover, .arrow-right:hover {
+  background: #e50914;
+  color: white;
+}
+
+.games-scroll::-webkit-scrollbar{
+  display:none;
+}
+
+.game-card {
+  width: calc((100% / 9) - 14px);
+  height: 307px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+.game-card:hover{
+  transform:scale(1.08);
+}
+
+/* BOTÃO COMPRAR AGORA - Estilo Futurista Neon */
+.netflix-btn {
+  display: inline-block;
+  padding: 22px 55px;
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(90deg, #e50914, #ff3b3b);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.3s;
+  box-shadow: 0 0 10px #e50914, 0 0 20px #ff3b3b, 0 0 30px #ff3b3b;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+/* Glow animado */
+.netflix-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #ff0000, #ff3b3b, #ff0000, #ff3b3b);
+  animation: glow 2.5s linear infinite;
+  filter: blur(15px);
+  z-index: -1;
+}
+
+@keyframes glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.netflix-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff0000, 0 0 30px #ff3b3b, 0 0 40px #ff3b3b;
+}
+
+.floating-btn-container {
+  text-align: center;
+  margin: 40px 0;
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.05); }
+}
+
+/* FAIXAS DE DESTAQUE */
+.faixa-destaque{
+  font-family:'Bebas Neue', sans-serif;
+  color:#fff;
+  text-align:center;
+  padding:24px 40px;
+  font-size:36px;
+}
+
+.top10-banner {
+  display: flex;
+  justify-content: center;
+  margin-top: -0px; 
+  margin-bottom: 110px;
+}
+
+.top10-banner img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+
+  /* Máscara horizontal: começa transparente na esquerda e fica sólida rapidamente */
+  -webkit-mask-image: linear-gradient(
+    to right, 
+    transparent 0%, 
+    black 15%, 
+    black 100%
+  );
+  mask-image: linear-gradient(
+    to right, 
+    transparent 0%, 
+    black 15%, 
+    black 100%
+  );
+}
+
+/* ===== MODAL NETFLIX STYLE ===== */
+.netflix-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.netflix-modal.active {
+  display: flex;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 900px;
+  background: #141414;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  animation: modalFade .3s ease;
+}
+
+@keyframes modalFade {
+  from { transform: scale(.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-video {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  background: #000;
+}
+
+.modal-info {
+  padding: 20px;
+}
+
+.modal-info h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.modal-info p {
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Definição da Animação */
+@keyframes subirSuave {
+  from {
+    opacity: 0;
+    transform: translateY(30px); /* Começa 30px abaixo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Termina na posição original */
+  }
+}
+
+/* Aplicando a animação ao conteúdo do banner */
+.banner-content {
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+  
+  /* Configurações da animação */
+  animation: subirSuave 1s ease-out forwards;
+  opacity: 0; /* Começa invisível até a animação iniciar */
+}
+
+/* Opcional: Pequeno atraso para os botões aparecerem depois do título */
+.banner-content h1 {
+  animation: subirSuave 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.banner-content p {
+  animation: subirSuave 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.banner-content a, .btn-info {
+  display: inline-block; /* Garante que a animação funcione bem nos botões */
+  animation: subirSuave 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* ===== ESTILOS DA TELA DE SPLASH GAMEFLIX ===== */
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #000; /* Fundo preto absoluto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* Fica acima de tudo (header, banner, etc.) */
+  overflow: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+/* Container do conteúdo para centralizar */
+.splash-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- O Texto Principal (GAMEFLIX) --- */
+.splash-text {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #e50914; /* Vermelho Netflix */
+  font-size: 5rem; /* Tamanho grande inicial */
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  
+  /* Aplica a animação de Zoom, Desfoque e Cores */
+  animation: gameflix-intro 3.5s ease-out forwards;
+}
+
+/* --- Camadas de Cores Extras (Aberração Cromática) --- */
+.splash-shadow-r, .splash-shadow-b {
+  position: absolute;
+  inset: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Camada Vermelha Atômica (Direita) */
+.splash-shadow-r {
+  color: #ff0000;
+  animation: shadow-r 3.5s ease-out forwards;
+}
+
+/* Camada Azul/Ciano (Esquerda) */
+.splash-shadow-b {
+  color: #00ffff;
+  animation: shadow-b 3.5s ease-out forwards;
+}
+
+/* === DEFINIÇÃO DAS ANIMAÇÕES (KEYFRAMES) === */
+
+/* 1. Animação Principal: Zoom e Desfoque do Texto */
+@keyframes gameflix-intro {
+  0% {
+    transform: scale(0.6); /* Começa menor */
+    filter: blur(5px); /* Bem desfocado */
+    opacity: 0;
+  }
+  15% {
+    transform: scale(1.1); /* Zoom rápido (efeito de impacto) */
+    filter: blur(0px); /* Fica nítido */
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.1); /* Mantém o tamanho e nitidez */
+    filter: blur(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(10); /* Zoom GIGANTE (passa pela tela) */
+    filter: blur(30px); /* Desfoca muito no final */
+    opacity: 0; /* Some */
+  }
+}
+
+/* 2. Animação da Camada Vermelha (Se desfaz para a direita) */
+@keyframes shadow-r {
+  0%, 15% { opacity: 0; transform: translateX(0); }
+  20% { opacity: 1; transform: translateX(10px) scale(1.1); filter: blur(2px); }
+  100% { opacity: 0; transform: translateX(150px) scale(15); filter: blur(30px); }
+}
+
+/* 3. Animação da Camada Ciano (Se desfaz para a esquerda) */
+@keyframes shadow-b {
+  0%, 15% { opacity: 0; transform: translateX(0); }
+  20% { opacity: 1; transform: translateX(-10px) scale(1.1); filter: blur(2px); }
+  100% { opacity: 0; transform: translateX(-150px) scale(15); filter: blur(30px); }
+}
+
+/* Classe para esconder a splash screen no final */
+#splash-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* Garante que o usuário possa clicar no site */
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #444;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    width: 0; /* Começa fechada */
+    transition: width 0.4s;
+    font-size: 14px;
+}
+
+/* Quando passar o mouse ou focar, ela abre */
+.search-box:hover input, .search-box input:focus {
+    width: 200px;
+    margin-right: 10px;
+}
+
+.search-box button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* --- RODAPÉ ESTILO NETFLIX REAL --- */
+.footer {
+  background-color: #000;
+  color: #757575; /* Cinza clássico da Netflix */
+  padding: 50px 4% 20px;
+  font-size: 13px;
+  margin-top: 50px;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-contact {
+  margin-bottom: 30px;
+}
+
+.footer-contact a {
+  color: #757575;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colunas iguais */
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.footer-column {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 12px;
+}
+
+.footer-column a {
+  color: #757575;
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.footer-country {
+  font-size: 11px;
+}
+
+/* --- ESTILO DA TELA DE LOGIN --- */
+#login-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+              url('https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bca1-07e3f8eb14af/60a92d3f-5835-43a0-98ef-66b976c1233f/BR-pt-20220502-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 50000; /* Garante que fica na frente de tudo */
+  display: flex;
+  flex-direction: column;
+}
+
+.login-header { padding: 25px 50px; }
+
+.login-box {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 60px;
+  width: 100%;
+  max-width: 450px;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.login-box h1 { margin-bottom: 28px; font-size: 32px; }
+
+.input-group { margin-bottom: 16px; }
+
+/* --- AJUSTE DOS CAMPOS DE LOGIN --- */
+.login-box .input-group input {
+  width: 100%;
+  padding: 16px;
+  background-color: #333 !important; /* O !important garante que o branco não volte */
+  border: none;
+  border-radius: 4px;
+  color: #ffffff; /* Letras brancas ao digitar */
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box; /* Evita que o campo 'escape' da caixa */
+}
+
+/* Cor do texto de exemplo (Email/Senha) */
+.login-box .input-group input::placeholder {
+  color: #8c8c8c;
+}
+
+/* Quando o usuário clica para digitar (Foco) */
+.login-box .input-group input:focus {
+  background-color: #454545 !important;
+  box-shadow: 0 1px 0 var(--netflix-red); /* Linha vermelha discreta embaixo ao focar */
+}
+
+/* Remove o fundo amarelo/branco que o Chrome coloca automaticamente no preenchimento automático */
+.login-box .input-group input:-webkit-autofill,
+.login-box .input-group input:-webkit-autofill:hover, 
+.login-box .input-group input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #333 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.btn-login-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--netflix-red);
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.login-help {
+  display: flex;
+  justify-content: flex-start;
+  color: #b3b3b3;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.login-footer-info { margin-top: 40px; color: #737373; }
+.login-footer-info a { color: white; text-decoration: none; }
+
+/* Classe para esconder a tela após login */
+#login-screen.hidden { display: none; }
+
+/* Ajuste da Logo do Banner */
+#banner-logo {
+    width: 100%;
+    max-width: 350px; /* Tamanho ideal para desktop */
+    height: auto;
+    margin-bottom: 10px;
+    display: block;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.8)); /* Faz a logo se destacar do vídeo */
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   AJUSTE MOBILE UNIFICADO - GAMEFLIX (NÃO AFETA O PC)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* 1. Ajustes de Topo e Banner */
+  .pinning-header { height: 60px; }
+  
+  .banner { 
+    height: 45vh !important; 
+    margin-top: 0;
+    padding-bottom: 80px !important;
+  }
+
+  .banner-content {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  #banner-logo {
+    max-width: 220px !important;
+    margin: 0 auto 15px auto !important;
+  }
+
+  .banner-content h1 { font-size: 1.8rem !important; }
+  .banner-content p { font-size: 14px !important; }
+
+  .btn-play, .btn-info {
+    font-size: 14px !important;
+    padding: 10px 15px !important;
+    width: 90%;
+    margin: 5px auto !important;
+    display: block !important;
+  }
+
+  /* 2. Navegação e Busca */
+  .nav-links { display: none !important; } /* Esconde categorias que não cabem */
+  
+  .header-actions { gap: 8px; }
+  .search-box input:focus, .search-box:hover input { width: 120px; }
+
+  /* 3. Ajuste das Fileiras de Jogos (Rows) */
+  .row {
+    margin-top: 20px !important;
+    padding: 0 15px;
+  }
+
+  .row h2 {
+    font-size: 1.1rem !important;
+    margin-bottom: 15px !important;
+  }
+
+  .games-scroll {
+    display: flex !important;
+    flex-wrap: nowrap !important; /* Permite deslizar para o lado como na Netflix */
+    overflow-x: auto !important;
+    gap: 10px !important;
+    padding-bottom: 15px;
+  }
+
+  .game-card {
+    min-width: 130px !important;
+    height: 190px !important;
+    flex-shrink: 0;
+    width: auto !important; /* Sobrescreve o cálculo de 9 colunas do PC */
+  }
+
+  /* 4. Números e Cards do Top 10 */
+  .top10-banner {
+    margin-bottom: 20px !important;
+    margin-top: 10px;
+  }
+
+  .card-container {
+    min-width: 160px !important;
+    flex: 0 0 auto;
+}
+
+
+  .rank-number {
+    font-size: 100px !important;
+    bottom: -15px !important;
+    left: -10px !important;
+    -webkit-text-stroke: 2px #6a6a6a !important;
+    letter-spacing: -5px;
+  }
+
+  .poster-img {
+    width: 110px !important;
+    height: 160px !important;
+    margin-left: 55px !important;
+  }
+
+  /* 5. Splash Screen e Modal */
+  .splash-text { font-size: 2.5rem !important; }
+  
+  .modal-content { width: 95%; }
+  .modal-video { height: 250px; }
+
+  /* 6. Rodapé e Botões */
+  .footer-links { grid-template-columns: repeat(2, 1fr); }
+  
+  .netflix-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+  }
+}
+
+/* --- ESTILO DO POPUP GAMEFLIX --- */
+.modal-wpp { 
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(8px); 
+    align-items: center; 
+    justify-content: center; 
+    font-family: 'Arial', sans-serif; 
+}
+
+/* --- ESTILO ULTRA: AÇO ESCOVADO --- */
+.modal-wpp-content { 
+    background: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+    backdrop-filter: blur(15px);   /* Efeito de vidro desfocado */
+    color: white; 
+    padding: 50px 40px; 
+    border-radius: 15px; /* Bordas arredondadas ficam melhores no estilo futurista */
+    width: 90%; 
+    max-width: 450px; 
+    text-align: center; 
+    position: relative; 
+    overflow: hidden; /* Importante para a luz não escapar */
+    border: 1px solid rgb(0, 0, 0); /* Borda de vidro sutil */
+    
+    /* Glow futurista ciano/azul */
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.332), 
+                0 20px 50px rgba(0, 0, 0, 0.9);
+}
+
+/* --- ANIMAÇÃO --- */
+@keyframes modalSurgir { 
+    from { opacity: 0; transform: translateY(-30px) scale(0.9); } 
+    to { opacity: 1; transform: translateY(0) scale(1); } 
+}
+
+.modal-wpp-content h2 { 
+    color: #075e54; 
+    margin-bottom: 25px; 
+    font-size: 26px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    font-family: 'Bebas Neue', sans-serif; 
+} 
+
+.modal-wpp-content p { 
+    font-size: 16px; 
+    line-height: 1.6; 
+    margin-bottom: 30px; 
+    color: #efefef; 
+    font-weight: 300; 
+}
+
+.btn-wpp { 
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(90deg, #075e54, #075e54);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    z-index: 1;
+    transition: 0.3s;
+    /* O mesmo brilho (glow) dos botões do site */
+    box-shadow: 0 0 10px #075e54, 0 0 20px #075e54;
+    /* A mesma animação de flutuar/pulsar */
+    animation: float 2.5s ease-in-out infinite;
+}
+
+.btn-wpp:hover { 
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #075e54, 0 0 40px #075e54;
+}
+
+/* Deixando o ícone do Zap branco para combinar com o estilo Premium */
+.btn-wpp img { 
+    width: 22px;
+    vertical-align: middle;
+    margin-right: 10px;
+    filter: brightness(0) invert(1);
+}
+
+.close-wpp { 
+    position: absolute; 
+    top: 15px; 
+    right: 20px; 
+    font-size: 28px; 
+    color: #666; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    line-height: 1; 
+}
+
+.close-wpp:hover { 
+    color: #fff; 
+    transform: rotate(90deg);
+}
+
+/* Efeito de Brilho Ambilight para o Modal */
+.modal-content {
+  position: relative;
+  /* Cria uma sombra colorida suave que simula a luz saindo da tela */
+  box-shadow: 0 0 50px rgba(229, 9, 20, 0.4); 
+  transition: box-shadow 0.5s ease;
+}
+
+/* Escurecimento extra do fundo no modo cinema */
+.netflix-modal.active {
+  background: rgba(0, 0, 0, 0.95); /* Quase 100% preto */
+  backdrop-filter: blur(10px); /* Desfoca o fundo do site */
+}
+
+/* Ajuste no vídeo para o brilho não vazar de forma estranha */
+.modal-video {
+  display: block;
+  border-bottom: 2px solid #222;
+}
+/* Efeito Master de Desfoque no Fundo de Login */
+body.modal-open #login-screen {
+  filter: blur(10px) brightness(0.3);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+/* Brilho especial para o QR Code no centro */
+.modal-wpp-content {
+  border: 1px solid rgba(37, 211, 102, 0.5);
+  box-shadow: 0 0 50px rgba(37, 211, 102, 0.2);
+}
+
+.modal-wpp-content h2 {
+  color:   color: ##075e54 !important; /* Título em verde WhatsApp */
+ !important; /* Título em verde WhatsApp */
+}
+/* Limpa as manchas da animação da Splash Screen da frente do Modal */
+#wppModal {
+  z-index: 99999; /* Garante que o QR Code fique acima de qualquer animação */
+}
+
+/* Remove qualquer efeito de aberração cromática (manchas coloridas) de dentro do modal */
+.modal-wpp-content * {
+  animation: none !important;
+  filter: none !important;
+}
+
+/* --- BALÃO DE INFORMAÇÕES (TOOLTIP) --- */
+.game-card, .card-container {
+  position: relative;
+}
+
+/* Criando o balão */
+.game-card:hover::after, .card-container:hover::after {
+  content: "OFERTA DE LANÇAMENTO • 70% OFF";
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 100;
+  border: 1px solid var(--netflix-red);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  pointer-events: none; /* Garante que o balão não atrapalhe o clique */
+  animation: fadeInTooltip 0.3s ease;
+}
+/* Estilo para alinhar os containers e permitir o scroll lateral */
+.games-scroll {
+    display: flex;
+    gap: 15px;            /* Espaço entre os cards */
+    padding: 20px;
+    overflow-x: auto;     /* Ativa o scroll horizontal */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Scroll suave no celular */
+}
+
+/* Esconde a barra de scroll para ficar mais limpo (opcional) */
+.games-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* Estilo da imagem do card para não distorcer */
+.game-card {
+    width: 200px;         /* Largura fixa do card */
+    height: 300px;        /* Altura fixa do card */
+    object-fit: cover;    /* Faz a imagem preencher o espaço sem esticar */
+    border-radius: 8px;   /* Cantos arredondados */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.game-container:hover {
+    transform: scale(1.05); /* Aumenta levemente o card */
+    z-index: 10;
+}
+
+/* --- EMBELEZAMENTO DA PÁGINA DE JOGO --- */
+
+/* Trava o fundo */
+body.modal-open { overflow: hidden; }
+
+.game-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 10000;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    backdrop-filter: blur(15px);
+    padding: 40px 10px;
+}
+
+.game-modal-container {
+    background: linear-gradient(145deg, #141414, #000000);
+    width: 95%;
+    max-width: 850px;
+    border-radius: 20px; /* Bordas mais arredondadas */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 15px rgba(229, 9, 20, 0.1);
+    border: 1px solid #222;
+    animation: modalSlideUp 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes modalSlideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-hero { 
+    width: 100%; 
+    aspect-ratio: 16/9; 
+    border-bottom: 3px solid var(--netflix-red);
+}
+
+.modal-body { padding: 40px; }
+
+/* Cards de Preço Estilizados */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.price-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.price-card:hover { 
+    background: rgba(229, 9, 20, 0.05);
+    border-color: var(--netflix-red);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(229, 9, 20, 0.3);
+}
+
+.price-card h4 { color: #ff3131; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; }
+.price-card .price { font-size: 1.8rem; font-weight: 800; color: #fff; }
+
+.btn-buy {
+    background: linear-gradient(90deg, #e50914, #ff3131);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 900;
+    width: 100%;
+    margin-top: 15px;
+    transition: 0.3s;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.btn-buy:hover { filter: brightness(1.2); transform: scale(1.02); }
+
+/* Seções de Texto */
+.modal-section { margin-bottom: 40px; }
+.modal-section h3 { 
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 1.8rem; 
+    color: #fff; 
+    border-left: 4px solid var(--netflix-red);
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+/* Scrollbar da Galeria */
+.photo-carousel { 
+    display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px; 
+}
+.photo-carousel img { 
+    height: 160px; border-radius: 12px; object-fit: cover; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid #333;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 45px;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    z-index: 100;
+    line-height: 1;
+}
+.close-modal:hover { color: #fff; }
+
+.top-10-container button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.top-10-container button:first-of-type {
+  left: 0;
+}
+
+.top-10-container button:last-of-type {
+  right: 0;
+}
+
+.category-wrapper {
+  position: relative;
+}
+
+.games-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.scroll-btn.left {
+  left: 0;
+}
+
+.scroll-btn.right {
+  right: 0;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  overflow: hidden; /* IMPORTANTE pro efeito */
+}
+
+/* EFEITO DE BRILHO */
+.scroll-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+  transform: skewX(-25deg);
+}
+
+/* ANIMAÇÃO AO PASSAR O MOUSE */
+.scroll-btn:hover::before {
+  left: 150%;
+  transition: 0.6s;
+}
+/* Efeito do Botão de Som Estilo Original (Círculo Branco) */
+.pulse-button {
+  display: none; /* Mantém o controle pelo JS */
+  position: absolute;
+  top: 85%;      /* Posiciona no canto inferior */
+  left: 94%;     /* Posiciona no canto direito */
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+  /* Formato do Botão conforme a imagem */
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro sutil */
+  border: 2px solid #ffffff;           /* Borda branca idêntica à imagem */
+  border-radius: 50%;                  /* Círculo perfeito */
+  
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Ativa a animação de piscar branco */
+  animation: pulse-white-glow 2s infinite;
+}
+
+/* Nova animação corrigida (Branca e Suave) */
+@keyframes pulse-white-glow {
+  0% { 
+    transform: translate(-50%, -50%) scale(1); 
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); 
+  }
+  70% { 
+    transform: translate(-50%, -50%) scale(1.1); 
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); 
+  }
+  100% { 
+    transform: translate(-50%, -50%) scale(1); 
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); 
+  }
+}
+/* Alinhamento da frase com a barra */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Frase "Pesquise aqui..." */
+.search-text {
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap; /* Impede que o texto quebre linha */
+}
+
+/* 1. Container do Brilho (Glow) */
+.search-container {
+  display: inline-block;
+  filter: drop-shadow(0 0 8px rgba(229, 9, 20, 0.6));
+  transition: filter 0.3s ease;
+}
+
+/* 2. A Barra Cyberpunk com efeito de LEQUE */
+.search-box {
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+  background: #222; 
+  border-left: 5px solid #e50914; 
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  
+  /* EFEITO LEQUE: Começa menor e expande */
+  width: 150px; 
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+}
+
+/* Quando clica ou passa o mouse, a barra "abre" */
+.search-wrapper:hover .search-box,
+.search-box:focus-within {
+  width: 280px; /* Largura dela aberta */
+  background: #2a2a2a;
+}
+
+/* Aumenta o brilho quando abre */
+.search-wrapper:hover .search-container {
+  filter: drop-shadow(0 0 15px rgba(229, 9, 20, 0.9));
+}
+
+/* 3. Input */
+.search-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  width: 100%;
+  font-size: 14px;
+}
+/* ============================================================
+   BUSCA ESTILO STEAM - DROPDOWN COM CAPAS
+   ============================================================ */
+.search-container {
+  position: relative;
+}
+
+.search-results-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 380px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-top: 2px solid #e50914;
+  border-radius: 0 0 8px 8px;
+  z-index: 99999;
+  max-height: 480px;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 20px rgba(229,9,20,0.15);
+  scrollbar-width: thin;
+  scrollbar-color: #e50914 #111;
+}
+
+.search-results-dropdown::-webkit-scrollbar { width: 5px; }
+.search-results-dropdown::-webkit-scrollbar-track { background: #111; }
+.search-results-dropdown::-webkit-scrollbar-thumb { background: #e50914; border-radius: 3px; }
+
+.search-results-dropdown.active {
+  display: block;
+  animation: dropdownFade 0.2s ease;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #222;
+  transition: background 0.2s;
+}
+
+.search-result-item:last-child { border-bottom: none; }
+
+.search-result-item:hover {
+  background: rgba(229,9,20,0.12);
+}
+
+.search-result-img {
+  width: 54px;
+  height: 74px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid #333;
+}
+
+.search-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-result-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 5px;
+}
+
+.search-result-desc {
+  font-size: 12px;
+  color: #999;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.search-result-arrow {
+  color: #e50914;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.search-no-results {
+  padding: 24px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.search-no-results span {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   MODAIS DE CATEGORIA ESTILO NETFLIX
+   ============================================================ */
+.cat-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(12px);
+  z-index: 60000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.cat-modal-overlay.active {
+  display: flex;
+  animation: catOverlayIn 0.3s ease;
+}
+
+@keyframes catOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cat-modal-box {
+  background: #141414;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 720px;
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid #2a2a2a;
+  animation: catBoxIn 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  scrollbar-width: thin;
+  scrollbar-color: #e50914 #111;
+}
+
+.cat-modal-box::-webkit-scrollbar { width: 5px; }
+.cat-modal-box::-webkit-scrollbar-track { background: #111; }
+.cat-modal-box::-webkit-scrollbar-thumb { background: #e50914; }
+
+@keyframes catBoxIn {
+  from { transform: translateY(40px) scale(0.97); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.cat-modal-close {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, transform 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.cat-modal-close:hover { background: #e50914; transform: rotate(90deg); }
+
+.cat-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 30px 30px 20px;
+  border-bottom: 1px solid #222;
+}
+
+.cat-modal-icon { font-size: 42px; line-height: 1; }
+
+.cat-modal-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  margin: 0;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.cat-modal-subtitle {
+  margin: 4px 0 0;
+  color: #888;
+  font-size: 13px;
+}
+
+.cat-modal-body { padding: 24px 30px; }
+
+.cat-modal-note {
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  padding: 0 30px 20px;
+  margin: 0;
+}
+
+/* --- VARIANTES DE COR POR CATEGORIA --- */
+.cat-ofertas .cat-modal-title { color: #ff4d00; }
+.cat-ofertas .cat-modal-header { border-bottom-color: rgba(255,77,0,0.3); }
+.cat-ofertas { box-shadow: 0 0 60px rgba(255,77,0,0.2); }
+
+.cat-lancamentos .cat-modal-title { color: #00cfff; }
+.cat-lancamentos .cat-modal-header { border-bottom-color: rgba(0,207,255,0.3); }
+.cat-lancamentos { box-shadow: 0 0 60px rgba(0,207,255,0.15); }
+
+.cat-instalar .cat-modal-title { color: #ff1616; }
+.cat-instalar .cat-modal-header { border-bottom-color: rgb(222, 5, 5); }
+.cat-instalar { box-shadow: 0 0 30px rgba(255, 29, 13, 0.257); }
+
+.cat-sorteios .cat-modal-title { color: #ffd700; }
+.cat-sorteios .cat-modal-header { border-bottom-color: rgba(255,215,0,0.3); }
+.cat-sorteios { box-shadow: 0 0 60px rgba(255,215,0,0.15); }
+
+.cat-duvidas .cat-modal-title { color: #e50914; }
+.cat-duvidas .cat-modal-header { border-bottom-color: rgba(229,9,20,0.3); }
+.cat-duvidas { box-shadow: 0 0 60px rgba(229,9,20,0.2); }
+
+/* --- OFERTAS --- */
+.cat-offer-card {
+  display: flex;
+  gap: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  align-items: center;
+  transition: border-color 0.3s, transform 0.2s;
+  position: relative;
+}
+.cat-offer-card:hover {
+  border-color: rgba(229,9,20,0.5);
+  transform: translateX(4px);
+}
+
+.cat-offer-highlight { border-color: rgba(255,215,0,0.3) !important; }
+.cat-offer-highlight:hover { border-color: rgba(255,215,0,0.7) !important; }
+
+.cat-offer-badge {
+  background: #e50914;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  min-width: 60px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.cat-badge-gold { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000; }
+
+.cat-offer-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  margin: 0 0 6px;
+}
+.cat-offer-content p { color: #999; font-size: 13px; margin: 0 0 10px; }
+
+.cat-offer-price { font-size: 14px; color: #ccc; margin-bottom: 12px; }
+.cat-offer-price strong { color: #fff; font-size: 1.1rem; }
+.cat-offer-price s { color: #555; }
+
+.cat-offer-btn {
+  background: linear-gradient(90deg, #e50914, #ff3b3b);
+  border: none;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cat-offer-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(229,9,20,0.5); }
+.cat-btn-gold { background: linear-gradient(90deg, #ffd700, #ffaa00); color: #000; }
+.cat-btn-gold:hover { box-shadow: 0 0 15px rgba(255,215,0,0.5); }
+
+
+
+/* --- LANÇAMENTOS --- */
+.cat-launch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.cat-launch-item {
+  display: flex;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #222;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+.cat-launch-item:hover { border-color: rgba(0,207,255,0.4); transform: scale(1.02); }
+.cat-launch-item img { width: 70px; height: 100px; object-fit: cover; flex-shrink: 0; }
+
+.cat-launch-info { padding: 10px 12px; display: flex; flex-direction: column; justify-content: center; }
+
+.cat-launch-tag {
+  display: inline-block;
+  background: #00cfff;
+  color: #000;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 2px 7px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.cat-tag-soon { background: #ffaa00; }
+
+.cat-launch-info h4 { font-size: 13px; margin: 0 0 4px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+.cat-launch-info p { font-size: 11px; color: #777; margin: 0; line-height: 1.3; }
+
+/* --- COMO INSTALAR --- */
+.cat-steps { display: flex; flex-direction: column; gap: 16px; }
+
+.cat-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 18px;
+  background: rgba(255, 129, 61, 0.04);
+  border: 1px solid rgb(171, 0, 0);
+  border-radius: 10px;
+  transition: border-color 0.3s;
+}
+.cat-step:hover { border-color: rgba(255, 116, 61, 0.35); }
+
+.cat-step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  color: rgba(255, 81, 0, 0.769);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 50px;
+  text-align: center;
+}
+
+.cat-step-info h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  margin: 0 0 6px;
+  color: #fe6c12;
+}
+.cat-step-info p { color: #999; font-size: 14px; margin: 0; line-height: 1.5; }
+/* 1. Alarga a caixa branca/preta do modal para os lados */
+.cat-modal-box.cat-instalar {
+    width: 100% !important;        /* Ocupa 95% da largura da tela */
+    max-width:  1200px !important;  /* Aumenta o limite máximo de largura */
+    padding: 20px !important;      /* Espaço interno para não grudar nas bordas */
+}
+
+/* 2. Configura o Grid para usar todo o novo espaço em uma linha só */
+@media (min-width: 768px) {
+    .gf-install-grid {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important; /* Força 5 colunas */
+        width: 100% !important;
+        gap: 20px !important; /* Espaço entre os cards */
+    }
+
+    /* Garante que o 5º card não tente ser maior que os outros */
+    .gf-install-card--full {
+        grid-column: span 1 !important;
+        border-left: 1px solid rgb(31, 231, 0) !important; /* Reseta o destaque lateral se quiser */
+    }
+}
+
+
+/* --- SORTEIOS --- */
+.cat-raffle-hero {
+  margin-bottom: 24px;
+}
+
+.cat-raffle-prize {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,170,0,0.05));
+  border: 1px solid rgba(255,215,0,0.25);
+  border-radius: 16px;
+  padding: 36px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cat-raffle-prize::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center top, rgba(255,215,0,0.07) 0%, transparent 70%);
+}
+
+.cat-raffle-icon { font-size: 60px; margin-bottom: 10px; }
+
+.cat-raffle-prize h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 4px;
+  color: #888;
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.cat-raffle-prize h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  color: #ffd700;
+  margin: 0 0 24px;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.cat-raffle-prize h2 span { color: #ffaa00; font-size: 1.6rem; }
+
+.cat-raffle-countdown {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cat-countdown-item {
+  background: rgba(255,215,0,0.1);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 8px;
+  padding: 12px 18px;
+  text-align: center;
+  min-width: 70px;
+}
+.cat-countdown-item span {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: #ffd700;
+  line-height: 1;
+}
+.cat-countdown-item small {
+  color: #888;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 4px;
+  display: block;
+}
+
+.cat-raffle-rules {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 20px 24px;
+}
+.cat-raffle-rules h4 { font-size: 14px; color: #ffd700; margin: 0 0 14px; letter-spacing: 1px; }
+.cat-raffle-rules ul { list-style: none; padding: 0; margin: 0; }
+.cat-raffle-rules ul li { color: #ccc; font-size: 14px; padding: 7px 0; border-bottom: 1px solid #1e1e1e; }
+.cat-raffle-rules ul li:last-child { border-bottom: none; }
+
+/* --- FAQ DÚVIDAS --- */
+.cat-faq { display: flex; flex-direction: column; gap: 8px; }
+
+.cat-faq-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid #222;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.cat-faq-item:hover { border-color: rgba(229,9,20,0.4); }
+.cat-faq-item.open { border-color: rgba(229,9,20,0.5); }
+
+.cat-faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #e5e5e5;
+  user-select: none;
+}
+
+.faq-arrow {
+  color: #e50914;
+  transition: transform 0.3s;
+  font-size: 12px;
+}
+.cat-faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+.cat-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  color: #999;
+  font-size: 14px;
+  line-height: 1.6;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+}
+.cat-faq-item.open .cat-faq-a { max-height: 200px; padding: 0 20px 16px; }
+
+/* CTA BUTTON */
+.cat-cta-btn {
+  display: block;
+  width: calc(100% - 60px);
+  margin: 0 30px 28px;
+  padding: 16px;
+  background: linear-gradient(90deg, #e50914, #ff3b3b);
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(229,9,20,0.35);
+}
+.cat-cta-btn:hover { transform: scale(1.02); box-shadow: 0 4px 30px rgba(229,9,20,0.55); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .cat-modal-box { max-width: 100%; border-radius: 12px 12px 0 0; margin-top: auto; }
+  .cat-modal-overlay { align-items: flex-end; padding: 0; }
+  .cat-modal-header { padding: 24px 20px 16px; }
+  .cat-modal-body { padding: 16px 20px; }
+  .cat-launch-grid { grid-template-columns: 1fr; }
+  .cat-raffle-countdown { gap: 10px; }
+  .cat-countdown-item { min-width: 55px; padding: 10px 12px; }
+  .search-results-dropdown { width: 280px; right: -60px; }
+  .cat-modal-title { font-size: 1.6rem; }
+}
+/* ================================================================
+   GAMEFLIX — CSS ISOLADO: UPGRADE MODAIS "COMO INSTALAR" E "SORTEIOS"
+   Cole este bloco no final do seu style.css (ou num <style> no HTML).
+   Todos os seletores usam prefixo "gf-" para não colidir com o resto.
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   FONTES ADICIONAIS (cole no <head> se ainda não tiver)
+   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+   ---------------------------------------------------------------- */
+
+/* ================================================================
+   SEÇÃO 1 — MODAL: COMO INSTALAR
+   Classes: .gf-install-grid, .gf-install-card, .gf-install-step-bg,
+            .gf-install-icon, .gf-install-card-title, .gf-install-card-desc
+   ================================================================ */
+
+/* Grid de 2 colunas (desktop: 4) */
+@media (min-width: 768px) {
+  .gf-install-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px; 
+
+    /* ALTERE/ADICIONE ESTES VALORES: */
+    width: 95%;           /* Faz o grid ocupar 95% da largura da tela/modal */
+    max-width: 1400px;    /* Aumenta o limite máximo de largura (era menor antes) */
+    margin: 0 auto;       /* Mantém centralizado enquanto alarga */
+  }
+
+  .gf-install-card--full {
+    grid-column: span 1; 
+  }
+}
+
+/* Card individual */
+.gf-install-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(20, 20, 20, 0.70);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
+  padding: 24px 20px 22px;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+
+/* Hover: elevação + brilho vermelho na borda */
+.gf-install-card:hover {
+  transform: translateY(-5px);
+  border-color: #E50914;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.30),
+              0 8px 30px rgba(0, 0, 0, 0.50);
+}
+
+/* Número decorativo ao fundo */
+.gf-install-step-bg {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -2px;
+}
+
+/* Ícone emoji acima do título */
+.gf-install-icon {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-style: normal;
+}
+
+/* Título do passo */
+.gf-install-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+
+/* Descrição do passo */
+.gf-install-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #b3b3b3;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Card que ocupa as 2 colunas (passo 5) */
+.gf-install-card--full {
+  grid-column: 1 / -1;
+}
+
+/* Acento lateral vermelho no card completo */
+.gf-install-card--full {
+  border-left: 3px solid #00fff2;
+}
+
+/* Desktop: Todos os 5 cards em uma única linha */
+@media (min-width: 768px) {
+  .gf-install-grid {
+    display: grid;
+    /* Define 5 colunas de tamanhos iguais */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px; /* Ajuste o espaçamento entre eles se necessário */
+  }
+
+  .gf-install-card--full {
+    /* Resetamos para que ele ocupe apenas 1 coluna como os outros */
+    grid-column: span 1; 
+  }
+}
+
+/* ================================================================
+   SEÇÃO 2 — MODAL: SORTEIOS
+   Classes: .gf-draw-container, .gf-draw-hero, .gf-draw-badge,
+            .gf-draw-badge-dot, .gf-draw-prize-*, .gf-draw-countdown*,
+            .gf-draw-rules, .gf-draw-cta
+   ================================================================ */
+
+/* Wrapper externo */
+.gf-draw-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Hero Card — largura total com gradiente escuro */
+.gf-draw-hero {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(30, 0, 0, 0.85) 0%,
+    rgba(20, 20, 20, 0.75) 50%,
+    rgba(229, 9, 20, 0.12) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 9, 20, 0.25);
+  border-radius: 14px;
+  padding: 32px 28px 28px;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Brilho de fundo decorativo */
+.gf-draw-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(229, 9, 20, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.gf-draw-hero:hover {
+  transform: translateY(-3px);
+  border-color: #E50914;
+  box-shadow: 0 0 28px rgba(229, 9, 20, 0.25),
+              0 12px 40px rgba(0, 0, 0, 0.60);
+}
+
+/* Row do badge */
+.gf-draw-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+/* Badge "ATIVO" pulsante */
+.gf-draw-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(229, 9, 20, 0.20);
+  border: 1px solid rgba(229, 9, 20, 0.50);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #E50914;
+  text-transform: uppercase;
+}
+
+/* Ponto pulsante dentro do badge */
+.gf-draw-badge-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #E50914;
+  animation: gf-pulse-dot 1.4s ease-in-out infinite;
+}
+
+@keyframes gf-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Label ao lado do badge */
+.gf-draw-badge-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #b3b3b3;
+}
+
+/* Ícone do prêmio */
+.gf-draw-prize-icon {
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+/* Título do prêmio */
+.gf-draw-prize-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: #ffd700;
+  margin: 0 0 6px;
+  line-height: 1.1;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.30);
+}
+
+/* Subtítulo */
+.gf-draw-prize-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #b3b3b3;
+  margin: 0 0 22px;
+}
+
+/* Countdown */
+.gf-draw-countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gf-draw-countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.50);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px 18px;
+  min-width: 64px;
+}
+
+.gf-draw-countdown-item span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.gf-draw-countdown-item small {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #b3b3b3;
+  margin-top: 4px;
+}
+
+.gf-draw-countdown-sep {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: #E50914;
+  line-height: 1;
+  margin-bottom: 14px; /* compensa o "small" abaixo do número */
+}
+
+/* Regras de participação */
+.gf-draw-rules {
+  background: rgba(20, 20, 20, 0.70);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: all 0.3s ease;
+}
+
+.gf-draw-rules:hover {
+  border-color: rgba(229, 9, 20, 0.30);
+}
+
+.gf-draw-rules-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  color: #ffd700;
+  margin: 0 0 14px;
+}
+
+.gf-draw-rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gf-draw-rules-list li {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #cccccc;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  line-height: 1.5;
+}
+
+.gf-draw-rules-list li:last-child {
+  border-bottom: none;
+}
+
+/* Botão CTA do sorteio — override de cor para branco no hover */
+.gf-draw-cta {
+  background: #E50914 !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  transition: background 0.3s ease, color 0.3s ease !important;
+}
+
+.gf-draw-cta:hover {
+  background: #ffffff !important;
+  color: #E50914 !important;
+}
+
+/* ================================================================
+   RESPONSIVIDADE — Sorteio
+   ================================================================ */
+@media (max-width: 480px) {
+  .gf-draw-countdown-item {
+    min-width: 52px;
+    padding: 10px 12px;
+  }
+  .gf-draw-prize-title {
+    font-size: 1.5rem;
+  }
+}
+ /* Isso faz o mouse ignorar o vídeo e focar apenas nos seus botões e textos */
+#banner-video {
+    pointer-events: none;
+    user-select: none;
+    object-fit: cover; /* Faz o vídeo preencher o espaço sem sobrar bordas pretas */
+}
+
+/* Garante que o container do banner não tenha barras de rolagem estranhas */
+.banner {
+    overflow: hidden;
+    position: relative;
+}
