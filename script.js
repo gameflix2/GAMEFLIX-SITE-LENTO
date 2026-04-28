@@ -26,87 +26,196 @@ function getYouTubeId(src) {
 }
 
 /* ============================================================
+   YOUTUBE IFRAME API
+   ============================================================ */
+var ytPlayer = null;
+var ytPlayerReady = false;
+
+// Carrega a API do YouTube uma vez
+function loadYouTubeAPI() {
+  if (window.YT || document.getElementById('yt-api-script')) return;
+  var tag = document.createElement('script');
+  tag.id = 'yt-api-script';
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+}
+
+// Chamada automática pela API quando estiver pronta
+window.onYouTubeIframeAPIReady = function () {
+  ytPlayerReady = true;
+  // Se já tiver um iframe esperando, inicializa
+  if (window._pendingYtId) {
+    createYTPlayer(window._pendingYtId);
+    window._pendingYtId = null;
+  }
+};
+
+function createYTPlayer(ytId) {
+  // Destrói player anterior se existir
+  if (ytPlayer) {
+    try { ytPlayer.destroy(); } catch(e) {}
+    ytPlayer = null;
+  }
+
+  // Garante que o container existe
+  var container = document.getElementById('yt-player-container');
+  if (!container) return;
+
+  // Cria div alvo para o player
+  var playerDiv = document.createElement('div');
+  playerDiv.id = 'yt-actual-player';
+  container.innerHTML = '';
+  container.appendChild(playerDiv);
+
+  ytPlayer = new YT.Player('yt-actual-player', {
+    videoId: ytId,
+    playerVars: {
+      autoplay: 1,
+      mute: 1,
+      loop: 1,
+      playlist: ytId,
+      controls: 0,
+      rel: 0,
+      modestbranding: 1,
+      showinfo: 0,
+      iv_load_policy: 3,
+      disablekb: 1,
+      fs: 0,
+      cc_load_policy: 0,
+      playsinline: 1
+    },
+    events: {
+      onReady: function(e) {
+        e.target.mute();
+        e.target.playVideo();
+        // Mostra botão de ativar som
+        showUnmuteBtn();
+      },
+      onStateChange: function(e) {
+        // Garante loop
+        if (e.data === YT.PlayerState.ENDED) {
+          e.target.seekTo(0);
+          e.target.playVideo();
+        }
+      }
+    }
+  });
+}
+
+/* ============================================================
+   BOTÃO ATIVAR SOM
+   ============================================================ */
+function showUnmuteBtn() {
+  var btn = document.getElementById('btn-unmute');
+  if (btn) btn.style.display = 'block';
+}
+
+function hideUnmuteBtn() {
+  var btn = document.getElementById('btn-unmute');
+  if (btn) btn.style.display = 'none';
+}
+
+function setupUnmuteButton() {
+  var btn = document.getElementById('btn-unmute');
+  if (!btn) return;
+
+  // Remove listeners antigos clonando o botão
+  var newBtn = btn.cloneNode(true);
+  btn.parentNode.replaceChild(newBtn, btn);
+
+  newBtn.addEventListener('click', function () {
+    var currentVideo = document.getElementById('banner-video');
+
+    // Se for YouTube (ytPlayer)
+    if (ytPlayer && typeof ytPlayer.unMute === 'function') {
+      ytPlayer.unMute();
+      ytPlayer.setVolume(70);
+      hideUnmuteBtn();
+      return;
+    }
+
+    // Se for Cloudinary (<video>)
+    if (currentVideo && currentVideo.tagName === 'VIDEO') {
+      currentVideo.pause();
+      currentVideo.muted = false;
+      currentVideo.volume = 0.7;
+      currentVideo.currentTime = 0;
+      var p = currentVideo.play();
+      if (p !== undefined) {
+        p.then(function() {
+          currentVideo.muted = false;
+          currentVideo.volume = 0.7;
+        }).catch(function(){});
+      }
+      hideUnmuteBtn();
+    }
+  });
+}
+
+/* ============================================================
    BANNER: TROCA VÍDEO (Cloudinary ou YouTube)
    ============================================================ */
 function setBannerVideo(videoSrc) {
-  const ytId = getYouTubeId(videoSrc);
-  const section = document.getElementById('main-banner');
+  var ytId = getYouTubeId(videoSrc);
+  var section = document.getElementById('main-banner');
   if (!section) return;
 
-  const existing = document.getElementById('banner-video');
+  var existing = document.getElementById('banner-video');
 
   if (ytId) {
-    // Remove elemento anterior e qualquer overlay
+    loadYouTubeAPI();
+
+    // Remove elemento anterior
     if (existing) {
-      const nextEl = existing.nextElementSibling;
+      var nextEl = existing.nextElementSibling;
       if (nextEl && nextEl.dataset && nextEl.dataset.bannerOverlay) nextEl.remove();
       existing.remove();
     }
 
-    // Wrapper que esconde os controles do YouTube via overflow:hidden
-    const wrapper = document.createElement('div');
+    // Wrapper com overflow:hidden para cortar controles do YouTube
+    var wrapper = document.createElement('div');
     wrapper.id = 'banner-video';
-    wrapper.style.cssText = [
-      'position:absolute',
-      'top:0', 'left:0',
-      'width:100%', 'height:100%',
-      'overflow:hidden',
-      'pointer-events:none',
-      'z-index:0'
-    ].join(';');
+    wrapper.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:0;';
 
-    const iframe = document.createElement('iframe');
-    const params = [
-      'autoplay=1',
-      'mute=1',
-      'loop=1',
-      'playlist=' + ytId,
-      'controls=0',
-      'rel=0',
-      'modestbranding=1',
-      'showinfo=0',
-      'iv_load_policy=3',
-      'disablekb=1',
-      'fs=0',
-      'cc_load_policy=0'
-    ].join('&');
+    // Container interno que receberá o player da API
+    var playerContainer = document.createElement('div');
+    playerContainer.id = 'yt-player-container';
+    // Tamanho maior que 100% para esconder barras/logo do YouTube
+    playerContainer.style.cssText = 'position:absolute;top:50%;left:50%;width:300%;height:300%;transform:translate(-50%,-50%);pointer-events:none;';
 
-    iframe.src = 'https://www.youtube.com/embed/' + ytId + '?' + params;
-    iframe.frameBorder = '0';
-    iframe.allow = 'autoplay; encrypted-media';
-    // Iframe oversized e centralizado para cortar barras/logo do YouTube
-    iframe.style.cssText = [
-      'position:absolute',
-      'top:50%', 'left:50%',
-      'width:100%', 'height:100%',
-      'transform:translate(-50%,-50%)',
-      'border:none',
-      'pointer-events:none'
-    ].join(';');
-
-    wrapper.appendChild(iframe);
+    wrapper.appendChild(playerContainer);
     section.insertBefore(wrapper, section.firstChild);
 
     // Overlay para bloquear cliques no iframe
-    const overlay = document.createElement('div');
+    var overlay = document.createElement('div');
     overlay.dataset.bannerOverlay = '1';
-    overlay.style.cssText = [
-      'position:absolute',
-      'top:0', 'left:0',
-      'width:100%', 'height:100%',
-      'z-index:1',
-      'background:transparent'
-    ].join(';');
+    overlay.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;background:transparent;';
     wrapper.insertAdjacentElement('afterend', overlay);
+
+    // Cria o player
+    if (ytPlayerReady) {
+      createYTPlayer(ytId);
+    } else {
+      window._pendingYtId = ytId;
+    }
+
+    // Reconfigura botão de som para YouTube
+    setupUnmuteButton();
 
   } else {
     // Cloudinary: tag <video>
-    let videoEl = existing;
+    // Destrói player YouTube se existir
+    if (ytPlayer) {
+      try { ytPlayer.destroy(); } catch(e) {}
+      ytPlayer = null;
+    }
+
+    var videoEl = existing;
 
     if (!videoEl || videoEl.tagName !== 'VIDEO') {
       if (videoEl) {
-        const nextEl = videoEl.nextElementSibling;
-        if (nextEl && nextEl.dataset && nextEl.dataset.bannerOverlay) nextEl.remove();
+        var nextEl2 = videoEl.nextElementSibling;
+        if (nextEl2 && nextEl2.dataset && nextEl2.dataset.bannerOverlay) nextEl2.remove();
         videoEl.remove();
       }
 
@@ -122,46 +231,50 @@ function setBannerVideo(videoSrc) {
 
     videoEl.src = videoSrc;
     videoEl.load();
-    videoEl.play().catch(() => {});
+    videoEl.play().catch(function(){});
     videoEl.muted = true;
+
+    // Reconfigura botão de som para Cloudinary
+    setupUnmuteButton();
+    showUnmuteBtn();
   }
 }
 
 /* --- SCROLL INTELIGENTE DO TOP 10 CORRIGIDO --- */
-const top10 = document.getElementById('top10');
+var top10 = document.getElementById('top10');
 
 function scrollTop10Left() {
-  const el = document.getElementById('top10');
+  var el = document.getElementById('top10');
   if (el.scrollLeft <= 0) { el.scrollLeft = el.scrollWidth; }
   else { el.scrollBy({ left: -400, behavior: 'smooth' }); }
 }
 
 function scrollTop10Right() {
-  const el = document.getElementById('top10');
+  var el = document.getElementById('top10');
   if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 5) { el.scrollLeft = 0; }
   else { el.scrollBy({ left: 400, behavior: 'smooth' }); }
 }
 
 function scrollTop20Left() {
-  const el = document.getElementById('top20');
+  var el = document.getElementById('top20');
   if (el.scrollLeft <= 0) { el.scrollLeft = el.scrollWidth; }
   else { el.scrollBy({ left: -400, behavior: 'smooth' }); }
 }
 
 function scrollTop20Right() {
-  const el = document.getElementById('top20');
+  var el = document.getElementById('top20');
   if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 5) { el.scrollLeft = 0; }
   else { el.scrollBy({ left: 400, behavior: 'smooth' }); }
 }
 
 function scrollCategory(button, direction) {
-  const container = button.parentElement.querySelector('.games-scroll');
+  var container = button.parentElement.querySelector('.games-scroll');
   container.scrollLeft += direction * 300;
 }
 
 /* --- EFEITO DO HEADER NO SCROLL --- */
-window.addEventListener('scroll', () => {
-  const header = document.getElementById('header');
+window.addEventListener('scroll', function() {
+  var header = document.getElementById('header');
   if (window.scrollY > 50) {
     header.style.background = 'rgba(20,20,20,0.95)';
   } else {
@@ -169,49 +282,37 @@ window.addEventListener('scroll', () => {
   }
 });
 
-/* --- EVENTOS DO BANNER VIDEO (mute/unmute ao clicar) --- */
+/* --- EVENTOS DO BANNER VIDEO CLOUDINARY --- */
 function registerBannerVideoEvents(videoEl) {
   if (!videoEl || videoEl._eventsRegistered) return;
   videoEl._eventsRegistered = true;
 
   videoEl.removeAttribute('loop');
 
-  videoEl.addEventListener('ended', () => {
+  videoEl.addEventListener('ended', function() {
     videoEl.muted = true;
-    videoEl.play().catch(() => {});
+    videoEl.play().catch(function(){});
   });
-
-  const bannerSection = document.getElementById('main-banner');
-  if (bannerSection) {
-    bannerSection.addEventListener('click', (e) => {
-      if (e.target.id === 'btn-unmute') return;
-      const currentVideo = document.getElementById('banner-video');
-      if (currentVideo && currentVideo.tagName === 'VIDEO') {
-        if (currentVideo.muted) {
-          currentVideo.muted = false;
-          currentVideo.volume = 0.3;
-        } else {
-          currentVideo.muted = true;
-        }
-      }
-    });
-  }
 }
 
-/* --- CONTROLE DO VÍDEO DO BANNER (LOOP INTELIGENTE) --- */
-window.addEventListener("DOMContentLoaded", () => {
-  const bannerVideo = document.getElementById("banner-video");
+/* --- CONTROLE DO VÍDEO DO BANNER INICIAL --- */
+window.addEventListener("DOMContentLoaded", function() {
+  loadYouTubeAPI();
+
+  var bannerVideo = document.getElementById("banner-video");
   if (bannerVideo && bannerVideo.tagName === 'VIDEO') {
     registerBannerVideoEvents(bannerVideo);
   }
+
+  setupUnmuteButton();
 });
 
 /* --- LÓGICA DO MODAL DE VÍDEO (NETFLIX STYLE) --- */
 function openModal(title, desc, videoSrc) {
-  const modal = document.getElementById("netflixModal");
-  const modalContent = modal.querySelector(".modal-content");
-  const iframe = document.getElementById("modalVideo");
-  const bannerVideo = document.getElementById("banner-video");
+  var modal = document.getElementById("netflixModal");
+  var modalContent = modal.querySelector(".modal-content");
+  var iframe = document.getElementById("modalVideo");
+  var bannerVideo = document.getElementById("banner-video");
 
   if (bannerVideo && bannerVideo.tagName === 'VIDEO') {
     bannerVideo.pause();
@@ -221,7 +322,7 @@ function openModal(title, desc, videoSrc) {
   document.getElementById("modalTitle").textContent = title;
   document.getElementById("modalDesc").textContent = desc;
 
-  const ytId = getYouTubeId(videoSrc);
+  var ytId = getYouTubeId(videoSrc);
   if (ytId) {
     iframe.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&mute=0&controls=1&rel=0';
   } else {
@@ -234,9 +335,9 @@ function openModal(title, desc, videoSrc) {
 }
 
 function closeModal() {
-  const modal = document.getElementById("netflixModal");
-  const iframe = document.getElementById("modalVideo");
-  const bannerVideo = document.getElementById("banner-video");
+  var modal = document.getElementById("netflixModal");
+  var iframe = document.getElementById("modalVideo");
+  var bannerVideo = document.getElementById("banner-video");
 
   iframe.src = "";
   modal.classList.remove("active");
@@ -244,18 +345,18 @@ function closeModal() {
 
   if (bannerVideo && bannerVideo.tagName === 'VIDEO') {
     bannerVideo.muted = true;
-    bannerVideo.play().catch(() => {});
+    bannerVideo.play().catch(function(){});
   }
 }
 
-document.getElementById("netflixModal").addEventListener("click", e => {
+document.getElementById("netflixModal").addEventListener("click", function(e) {
   if (e.target.id === "netflixModal") closeModal();
 });
 
 /* --- DEFINE O BOTÃO "MAIS INFORMAÇÕES" PARA info.html?id=SLUG --- */
 function setBannerInfoLink(title) {
-  const downloadAnchor = document.getElementById('banner-link');
-  const actionBtn = document.getElementById('btn-main-action');
+  var downloadAnchor = document.getElementById('banner-link');
+  var actionBtn = document.getElementById('btn-main-action');
   if (downloadAnchor && title) {
     downloadAnchor.href = 'info.html?id=' + toGameSlug(title);
     downloadAnchor.target = '_blank';
@@ -267,12 +368,12 @@ function setBannerInfoLink(title) {
   }
 }
 
-document.querySelectorAll('.free-game-trigger').forEach(card => {
+document.querySelectorAll('.free-game-trigger').forEach(function(card) {
   card.addEventListener('click', function () {
-    const novaLogo = this.getAttribute('data-logo');
-    const novaDesc = this.getAttribute('data-desc');
-    const novoVideo = this.getAttribute('data-video');
-    const dataTitle = this.getAttribute('data-title');
+    var novaLogo = this.getAttribute('data-logo');
+    var novaDesc = this.getAttribute('data-desc');
+    var novoVideo = this.getAttribute('data-video');
+    var dataTitle = this.getAttribute('data-title');
 
     document.getElementById('banner-logo').src = novaLogo;
     document.getElementById('banner-desc').textContent = novaDesc;
@@ -285,49 +386,30 @@ document.querySelectorAll('.free-game-trigger').forEach(card => {
 });
 
 /* --- LÓGICA DE LOGIN --- */
-const loginForm = document.getElementById('login-form');
+var loginForm = document.getElementById('login-form');
 
 loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const emailInput = document.getElementById('user-email').value;
-  const passwordInput = document.getElementById('user-password').value;
+  var emailInput = document.getElementById('user-email').value;
+  var passwordInput = document.getElementById('user-password').value;
 
-  const emailCorreto = "testegratis@gameflix.com";
-  const senhaCorreta = "a";
+  var emailCorreto = "testegratis@gameflix.com";
+  var senhaCorreta = "a";
 
   if (emailInput === emailCorreto && passwordInput === senhaCorreta) {
-    const loginScreen = document.getElementById('login-screen');
+    var loginScreen = document.getElementById('login-screen');
     loginScreen.style.display = 'none';
 
-    const bannerVideo = document.getElementById("banner-video");
-    const unmuteBtn = document.getElementById('btn-unmute');
+    var bannerVideo = document.getElementById("banner-video");
 
     if (bannerVideo && bannerVideo.tagName === 'VIDEO') {
       bannerVideo.muted = true;
-      bannerVideo.play().catch(err => console.log("Erro no autoplay:", err));
-
-      if (unmuteBtn) {
-        unmuteBtn.style.display = 'block';
-
-        unmuteBtn.addEventListener('click', function () {
-          const currentVideo = document.getElementById('banner-video');
-          if (!currentVideo || currentVideo.tagName !== 'VIDEO') { unmuteBtn.style.display = 'none'; return; }
-          currentVideo.pause();
-          currentVideo.muted = false;
-          currentVideo.volume = 0.7;
-          currentVideo.currentTime = 0;
-          const playPromise = currentVideo.play();
-          if (playPromise !== undefined) {
-            playPromise.then(() => {
-              currentVideo.muted = false;
-              currentVideo.volume = 0.7;
-            }).catch(() => {});
-          }
-          unmuteBtn.style.display = 'none';
-        }, { once: true });
-      }
+      bannerVideo.play().catch(function(err) { console.log("Erro no autoplay:", err); });
     }
+
+    setupUnmuteButton();
+    showUnmuteBtn();
 
     console.log("Bem-vindo ao GAMEFLIX!");
   } else {
@@ -337,7 +419,7 @@ loginForm.addEventListener('submit', function (e) {
 
 /* --- POPUP WHATSAPP --- */
 function openWppModal() {
-  const modalWpp = document.getElementById("wppModal");
+  var modalWpp = document.getElementById("wppModal");
   if (modalWpp) {
     modalWpp.style.display = "flex";
     document.body.style.overflow = "hidden";
@@ -346,7 +428,7 @@ function openWppModal() {
 }
 
 function closeWppModal() {
-  const modalWpp = document.getElementById("wppModal");
+  var modalWpp = document.getElementById("wppModal");
   if (modalWpp) {
     modalWpp.style.display = "none";
     document.body.style.overflow = "auto";
@@ -355,8 +437,8 @@ function closeWppModal() {
 }
 
 window.addEventListener('click', function (event) {
-  const modalWpp = document.getElementById("wppModal");
-  const modalNetflix = document.getElementById("netflixModal");
+  var modalWpp = document.getElementById("wppModal");
+  var modalNetflix = document.getElementById("netflixModal");
   if (event.target === modalWpp) closeWppModal();
   if (event.target === modalNetflix) closeModal();
 });
@@ -365,15 +447,15 @@ window.addEventListener('click', function (event) {
 document.addEventListener('click', function (e) {
   if (e.target.closest('#login-screen') || e.target.closest('#login-form')) return;
 
-  const card = e.target.closest('.game-card, .card-container');
+  var card = e.target.closest('.game-card, .card-container');
   if (!card) return;
 
-  const gameData = card.querySelector('img') || card;
+  var gameData = card.querySelector('img') || card;
 
-  const title = gameData.getAttribute('data-title');
-  const desc = gameData.getAttribute('data-desc');
-  const video = gameData.getAttribute('data-video');
-  const logo = gameData.getAttribute('data-logo');
+  var title = gameData.getAttribute('data-title');
+  var desc = gameData.getAttribute('data-desc');
+  var video = gameData.getAttribute('data-video');
+  var logo = gameData.getAttribute('data-logo');
 
   if (title && video) {
     e.preventDefault();
@@ -381,8 +463,8 @@ document.addEventListener('click', function (e) {
 
     setBannerVideo(video);
 
-    const bannerDesc = document.getElementById('banner-desc');
-    const bannerTitle = document.getElementById('banner-logo');
+    var bannerDesc = document.getElementById('banner-desc');
+    var bannerTitle = document.getElementById('banner-logo');
     if (bannerDesc) bannerDesc.textContent = desc;
     if (bannerTitle) bannerTitle.src = logo;
 
@@ -396,7 +478,7 @@ document.addEventListener('click', function (e) {
    MODAIS DE CATEGORIA
    ============================================================ */
 function openCategoryModal(cat) {
-  const modal = document.getElementById('modal-' + cat);
+  var modal = document.getElementById('modal-' + cat);
   if (!modal) return;
   document.body.style.overflow = 'hidden';
   modal.classList.add('active');
@@ -404,14 +486,14 @@ function openCategoryModal(cat) {
 }
 
 function closeCategoryModal(cat) {
-  const modal = document.getElementById('modal-' + cat);
+  var modal = document.getElementById('modal-' + cat);
   if (!modal) return;
   modal.classList.remove('active');
   document.body.style.overflow = '';
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.cat-modal-overlay').forEach(overlay => {
+  document.querySelectorAll('.cat-modal-overlay').forEach(function(overlay) {
     overlay.addEventListener('click', function (e) {
       if (e.target === this) {
         this.classList.remove('active');
@@ -422,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
-      document.querySelectorAll('.cat-modal-overlay.active').forEach(m => {
+      document.querySelectorAll('.cat-modal-overlay.active').forEach(function(m) {
         m.classList.remove('active');
         document.body.style.overflow = '';
       });
@@ -432,24 +514,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* --- FAQ Accordion --- */
 function toggleFaq(item) {
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.cat-faq-item.open').forEach(i => i.classList.remove('open'));
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.cat-faq-item.open').forEach(function(i) { i.classList.remove('open'); });
   if (!isOpen) item.classList.add('open');
 }
 
 /* --- Countdown Sorteio --- */
 function startRaffleCountdown() {
   function update() {
-    const now = new Date();
-    let target = new Date(now.getFullYear(), now.getMonth(), 30, 20, 0, 0);
+    var now = new Date();
+    var target = new Date(now.getFullYear(), now.getMonth(), 30, 20, 0, 0);
     if (now >= target) target = new Date(now.getFullYear(), now.getMonth() + 1, 30, 20, 0, 0);
-    const diff = target - now;
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const dEl = document.getElementById('raffle-days');
-    const hEl = document.getElementById('raffle-hours');
-    const mEl = document.getElementById('raffle-mins');
+    var diff = target - now;
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var mins = Math.floor((diff % 3600000) / 60000);
+    var dEl = document.getElementById('raffle-days');
+    var hEl = document.getElementById('raffle-hours');
+    var mEl = document.getElementById('raffle-mins');
     if (dEl) dEl.textContent = String(days).padStart(2, '0');
     if (hEl) hEl.textContent = String(hours).padStart(2, '0');
     if (mEl) mEl.textContent = String(mins).padStart(2, '0');
@@ -462,55 +544,55 @@ function startRaffleCountdown() {
    BUSCA ESTILO STEAM COM DROPDOWN
    ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
-  const searchInput = document.getElementById('game-search');
-  const dropdown = document.getElementById('search-results-dropdown');
+  var searchInput = document.getElementById('game-search');
+  var dropdown = document.getElementById('search-results-dropdown');
   if (!searchInput || !dropdown) return;
 
   function getAllGames() {
-    const games = [];
-    const seen = new Set();
-    document.querySelectorAll('.game-card, .poster-img, .card-container img').forEach(el => {
-      const title = el.getAttribute('data-title') || el.getAttribute('alt') || '';
-      const desc = el.getAttribute('data-desc') || '';
-      const img = el.getAttribute('src') || '';
-      const video = el.getAttribute('data-video') || '';
-      const logo = el.getAttribute('data-logo') || '';
-      const dataLink = el.getAttribute('data-link') || '';
+    var games = [];
+    var seen = new Set();
+    document.querySelectorAll('.game-card, .poster-img, .card-container img').forEach(function(el) {
+      var title = el.getAttribute('data-title') || el.getAttribute('alt') || '';
+      var desc = el.getAttribute('data-desc') || '';
+      var img = el.getAttribute('src') || '';
+      var video = el.getAttribute('data-video') || '';
+      var logo = el.getAttribute('data-logo') || '';
+      var dataLink = el.getAttribute('data-link') || '';
       if (title && title !== 'NOME DO JOGO' && !seen.has(title.toLowerCase())) {
         seen.add(title.toLowerCase());
-        games.push({ title, desc, img, video, logo, dataLink, el });
+        games.push({ title: title, desc: desc, img: img, video: video, logo: logo, dataLink: dataLink, el: el });
       }
     });
     return games;
   }
 
-  let allGames = [];
-  setTimeout(() => { allGames = getAllGames(); }, 500);
+  var allGames = [];
+  setTimeout(function() { allGames = getAllGames(); }, 500);
 
   function renderResults(term) {
     if (!term) { dropdown.classList.remove('active'); return; }
-    const filtered = allGames.filter(g => g.title.toLowerCase().includes(term.toLowerCase()));
+    var filtered = allGames.filter(function(g) { return g.title.toLowerCase().includes(term.toLowerCase()); });
     if (filtered.length === 0) {
       dropdown.innerHTML = '<div class="search-no-results"><span>🎮</span>Nenhum jogo encontrado para "<strong>' + term + '</strong>"</div>';
     } else {
-      dropdown.innerHTML = filtered.slice(0, 8).map(g =>
-        '<div class="search-result-item" data-title="' + g.title + '" data-desc="' + g.desc + '" data-img="' + g.img + '" data-video="' + g.video + '" data-logo="' + g.logo + '" data-link="' + g.dataLink + '">' +
+      dropdown.innerHTML = filtered.slice(0, 8).map(function(g) {
+        return '<div class="search-result-item" data-title="' + g.title + '" data-desc="' + g.desc + '" data-img="' + g.img + '" data-video="' + g.video + '" data-logo="' + g.logo + '" data-link="' + g.dataLink + '">' +
         '<img class="search-result-img" src="' + g.img + '" alt="' + g.title + '" onerror="this.style.display=\'none\'">' +
         '<div class="search-result-info"><div class="search-result-title">' + g.title + '</div>' +
         '<div class="search-result-desc">' + (g.desc || 'Clique para ver o trailer') + '</div></div>' +
-        '<span class="search-result-arrow">▶</span></div>'
-      ).join('');
+        '<span class="search-result-arrow">▶</span></div>';
+      }).join('');
     }
     dropdown.classList.add('active');
-    dropdown.querySelectorAll('.search-result-item').forEach(item => {
+    dropdown.querySelectorAll('.search-result-item').forEach(function(item) {
       item.addEventListener('click', function () {
-        const title = this.dataset.title;
-        const desc = this.dataset.desc;
-        const video = this.dataset.video;
-        const logo = this.dataset.logo;
+        var title = this.dataset.title;
+        var desc = this.dataset.desc;
+        var video = this.dataset.video;
+        var logo = this.dataset.logo;
         setBannerVideo(video);
-        const bannerDesc = document.getElementById('banner-desc');
-        const bannerLogo = document.getElementById('banner-logo');
+        var bannerDesc = document.getElementById('banner-desc');
+        var bannerLogo = document.getElementById('banner-logo');
         if (bannerDesc && desc) bannerDesc.textContent = desc;
         if (bannerLogo && logo) bannerLogo.src = logo;
         setBannerInfoLink(title);
@@ -522,7 +604,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   searchInput.addEventListener('input', function () {
-    const term = this.value.trim();
+    var term = this.value.trim();
     if (allGames.length === 0) allGames = getAllGames();
     renderResults(term);
   });
