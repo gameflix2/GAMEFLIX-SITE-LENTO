@@ -70,8 +70,8 @@ function createYTPlayer(ytId) {
 
   ytPlayer = new YT.Player('yt-actual-player', {
     videoId: ytId,
-    width: '100%',
-    height: '100%',
+    width: '150%',
+    height: '150%',
     playerVars: {
       autoplay: 1,
       mute: 1,
