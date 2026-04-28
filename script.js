@@ -88,10 +88,12 @@ function createYTPlayer(ytId) {
       playsinline: 1
     },
     events: {
-     onReady: function(e) {
-  var iframe = document.querySelector('#yt-player-container iframe');
+onReady: function(e) {
+  var iframe = e.target.getIframe(); // Pega o iframe diretamente do player
   if (iframe) {
-    iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;pointer-events:none;';
+    // Removemos o width: 100% e height: 100% daqui para o CSS externo funcionar
+    iframe.style.border = 'none';
+    iframe.style.pointerEvents = 'none';
   }
   e.target.mute();
   e.target.playVideo();
