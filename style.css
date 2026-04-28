@@ -2346,20 +2346,24 @@ body.modal-open { overflow: hidden; }
     overflow: hidden;
     position: relative;
 }
-/* Força o player do YouTube a cobrir as bordas pretas */
+/* Forçar o vídeo a preencher tudo e transbordar as bordas pretas */
 .banner-video iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100vh;
-  transform: translate(-50%, -50%) scale(1.35); 
-  pointer-events: none;
-  border: none;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 100vw !important; /* Largura total da janela */
+    height: 56.25vw !important; /* Proporção 16:9 baseada na largura */
+    min-height: 100vh !important; /* Garante que cubra a altura toda */
+    min-width: 177.77vh !important; /* Garante proporção em telas verticais */
+    transform: translate(-50%, -50%) scale(1.15) !important; 
+    pointer-events: none !important;
 }
 
-/* Garante que o container interno não limite o tamanho */
-#yt-actual-player {
-  width: 100% !important;
-  height: 100% !important;
+/* Remove qualquer restrição do container pai */
+.banner-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
