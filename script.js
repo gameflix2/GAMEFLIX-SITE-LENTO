@@ -64,11 +64,14 @@ function createYTPlayer(ytId) {
   // Cria div alvo para o player
   var playerDiv = document.createElement('div');
   playerDiv.id = 'yt-actual-player';
+  playerDiv.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
   container.innerHTML = '';
   container.appendChild(playerDiv);
 
   ytPlayer = new YT.Player('yt-actual-player', {
     videoId: ytId,
+    width: '100%',
+    height: '100%',
     playerVars: {
       autoplay: 1,
       mute: 1,
