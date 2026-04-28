@@ -85,12 +85,15 @@ function createYTPlayer(ytId) {
       playsinline: 1
     },
     events: {
-      onReady: function(e) {
-        e.target.mute();
-        e.target.playVideo();
-        // Mostra botão de ativar som
-        showUnmuteBtn();
-      },
+     onReady: function(e) {
+  var iframe = document.querySelector('#yt-player-container iframe');
+  if (iframe) {
+    iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;pointer-events:none;';
+  }
+  e.target.mute();
+  e.target.playVideo();
+  showUnmuteBtn();
+},
       onStateChange: function(e) {
         // Garante loop
         if (e.data === YT.PlayerState.ENDED) {
@@ -181,7 +184,7 @@ function setBannerVideo(videoSrc) {
     var playerContainer = document.createElement('div');
     playerContainer.id = 'yt-player-container';
     // Tamanho maior que 100% para esconder barras/logo do YouTube
-    playerContainer.style.cssText = 'position:absolute;top:50%;left:50%;width:300%;height:300%;transform:translate(-50%,-50%);pointer-events:none;';
+    playerContainer.style.cssText = 'position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%);pointer-events:none;';
 
     wrapper.appendChild(playerContainer);
     section.insertBefore(wrapper, section.firstChild);
