@@ -139,6 +139,7 @@ body {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
+
 .btn-play {
   background-color: #fff;
   color: #000;
@@ -2344,4 +2345,21 @@ body.modal-open { overflow: hidden; }
 .banner {
     overflow: hidden;
     position: relative;
+}
+/* Força o player do YouTube a cobrir as bordas pretas */
+.banner-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%) scale(1.35); 
+  pointer-events: none;
+  border: none;
+}
+
+/* Garante que o container interno não limite o tamanho */
+#yt-actual-player {
+  width: 100% !important;
+  height: 100% !important;
 }
